@@ -1,6 +1,6 @@
 
 const asyncHandler=require('express-async-handler');
-
+const Tours=require('../model/tourModel')
 
 
 //@desc Get Tours
