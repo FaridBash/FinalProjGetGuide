@@ -1,5 +1,79 @@
+
+/* Header Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+/* Header h1 */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+
+/* Header p */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+
+
 #page-container{
-    width: 60vw;
+    width: 100vw;
     height: 100vh;
-    background: rebeccapurple;
+    background: url('../assets/jerusalem.jpg')no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    position: relative;
+}
+
+#black-div{
+   
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #051A35;
+    opacity: 0.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+#header-text{
+    width: 50vw;
+    height: 20vh;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 12rem;
+    z-index: 1;
+    
+}
+#header-h1{
+    margin: 0;
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+}
+#header-p, #ourtours-link{
+    font-size: 20px;
+    font-family: 'Source Code Pro', monospace;
+
+}
+
+#ourtours-link{
+    color: #BAF801;
+    background: #051A35;
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    
+}
+
+
+
+#ourtours-link:hover{
+    background: #BAF801;
+    color: #051A35;
 }

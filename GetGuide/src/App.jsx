@@ -6,6 +6,7 @@ import './App.css'
 import Header from './Components/Header';
 import Home from './Pages/HomePage';
 import Chat from './Pages/Chat';
+import AdminDash from './Pages/AdminDash';
 const route = createBrowserRouter([
   {
     path: "/",
@@ -14,6 +15,10 @@ const route = createBrowserRouter([
        {
         path:'/',
         element:<Home/>
+      },
+       {
+        path:'/Dashboard',
+        element:<AdminDash/>
       },
       // {
       //   path:'*',

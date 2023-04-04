@@ -19,16 +19,14 @@
     color: #333;
 }
 
-#header{
+/* #header{
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background: #fff; */
-    /* font-size: 12px; */
     position: sticky;
-}
+} */
 
 #header-bar{
     width: 70vw;
@@ -39,13 +37,13 @@
     background: #051A35;
     color: #BAF801;
     font-family: 'Ubuntu', sans-serif;
-    position: sticky;
+    position: absolute;
     top: 0;
     z-index: 2;
 }
 
 #header-menu{
-    width: 20vw;
+    width: 25vw;
     height: 60%;
     display: flex;
     align-items: center;
@@ -55,29 +53,28 @@
 }
 
 .header-navlink{
+    
     color: #BAF801;
     padding: 0.4rem;
+    font-size: 12px;
 }
 
 .header-navlink:hover{
     background: #BAF801;
     color: #051A35;
 }
-#video{
+/* #video{
     width: 100vw;
     height: 50vh;
     background: url('../assets/jerusalem.jpg')no-repeat center center/cover;
-    /* background: rebeccapurple; */
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
     position: relative;
-   
-    
-}
+} */
 
-#black-div{
+/* #black-div{
    
     position: absolute;
     top: 0;
@@ -90,9 +87,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
+} */
 
-#header-text{
+/* #header-text{
     width: 50vw;
     height: 20vh;
     color: #fff;
@@ -113,17 +110,16 @@
 #header-p{
     font-size: 20px;
     font-family: 'Source Code Pro', monospace;
-
-     /* background: red; */
-}
+} */
 
 #outlet{
     width: 100vw;
     height: 100vh;
-    background: #BAF801;
+    /* background: #BAF801; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* position: absolute; */
+    position: absolute;
+    top: 0;
 }
