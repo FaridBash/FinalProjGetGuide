@@ -13,16 +13,29 @@ const tourSchema = mongoose.Schema(
     },
     sitesDuringtheTour: {
       type: Array,
+      required: [true, "Please Enter sites"],
     },
 
     highlights: {
       type: Array,
     },
 
+    images:{
+        type: String,
+        // required: [true, "Please enter price"],
+    },
+
+    city:{
+        type: String,
+        // required: [true, "Please enter city"],
+    },
     tourPrice: {
       type: Number,
-      required: [true, "Please enter price"],
+    //   required: [true, "Please enter price"],
     },
+    data: {
+      type:Buffer,
+    }
   },
   {
     timestamps: true,

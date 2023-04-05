@@ -7,9 +7,16 @@ const cors = require('cors');
 const connectDB=require('./config/db');
 const {errorHandler}=require('./middleware/errorMiddleware');
 const WebSocket = require("ws");
+const multer = require('multer');
 const port= process.env.PORT || 5858;
+
 const myPath=path.join(__dirname,'../GetGuide/dist');
 console.log(myPath);
+
+
+
+
+
 
 
 connectDB();

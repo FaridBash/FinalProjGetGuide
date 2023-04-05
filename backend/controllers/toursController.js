@@ -2,7 +2,6 @@
 const asyncHandler=require('express-async-handler');
 const Tours=require('../model/tourModel')
 
-
 //@desc Get Tours
 //@route GET /api/tours
 //@access Private
@@ -16,8 +15,8 @@ const getTourById=asyncHandler( async (req, res)=>{
     res.status(200).json(tour);
 })
 
-//@desc Set Customer
-//@route POST /api/Customer
+//@desc Set Tour
+//@route POST /api/Tour
 //@access Private
 const setTour=asyncHandler( async (req, res)=>{
     if(!req.body){
@@ -27,7 +26,11 @@ const setTour=asyncHandler( async (req, res)=>{
     const tour=await Tours.create({
         tourName: req.body.tourName,
         tourDescription: req.body.tourDescription,
+        sitesDuringtheTour: req.body.sitesDuringtheTour,
+        highlights: req.body.highlights,
+        city: req.body.city,
         tourPrice: req.body.tourPrice,
+        // images: req.files.map(file => file.filename),
     })
 
     res.status(200).json(tour);
