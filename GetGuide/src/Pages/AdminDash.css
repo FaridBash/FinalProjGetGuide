@@ -23,12 +23,14 @@
     width: 55%;
     height: 2rem;
     background: #fff;
+    color: #051A35;
 }
 
 .text-area{
     width: 55%;
     height: 5rem;
     background: #fff;
+    color: #051A35;
 }
 .tour-form-divs label{
     width: fit-content;

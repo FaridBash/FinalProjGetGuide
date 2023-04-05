@@ -3,17 +3,6 @@ import "./AdminDash.css";
 
 export default function AdminDash() {
   const [tour, setTour] = useState(undefined);
-  // const [images, setImages]=useState([]);
-  // useEffect(()=>{
-  //   if(tour){
-  //     try {
-
-  //       fetchTour(tour);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  // },[tour])
 
   const tourNameRef = useRef(null);
   const tourDescriptionRef = useRef(null);
@@ -26,13 +15,10 @@ export default function AdminDash() {
   function handleSubmit(e) {
     e.preventDefault();
     const tourObj = {};
-    const formData = new FormData();
-    // for (let i = 0; i < images.length; i++) {
-    //  formData.append('images', images[i]);
-    // }
-    console.log("formData", formData);
+  
+   
     const tour = {
-      // // images: formData.images,
+     
       tourName: tourNameRef.current.value,
       tourDescription: tourDescriptionRef.current.value,
       sitesDuringtheTour: tourSitesRef.current.value
@@ -64,9 +50,7 @@ export default function AdminDash() {
     // console.log(responseData);
   }
 
-  function handleFileChange(e) {
-    // setImages(e.target.images);
-  }
+ 
 
   return (
     <div id="admin-page">
