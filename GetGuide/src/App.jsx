@@ -8,6 +8,7 @@ import Home from './Pages/HomePage';
 import Chat from './Pages/Chat';
 import AdminDash from './Pages/AdminDash';
 import Tours from './Pages/Tours/Tours';
+import TourPage from './Pages/Tours/TourPage';
 const route = createBrowserRouter([
   {
     path: "/",
@@ -24,6 +25,10 @@ const route = createBrowserRouter([
        {
         path:'/Tours',
         element:<Tours/>
+      },
+       {
+        path:'/Tours/:id',
+        element:<TourPage/>
       },
       // {
       //   path:'*',

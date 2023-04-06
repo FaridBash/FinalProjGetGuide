@@ -1,10 +1,10 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink , useLocation, useNavigate} from 'react-router-dom'
 import { useState } from 'react'
 import './TourComponent.css'
 
 
 export default function TourBox(props){
-
+    let location = useLocation();
     const [imageHolderStyle, setImageHolderStyle]=useState({})
     const [linkStyle, setLinkStyle]=useState({});
     const mOver=()=>{
@@ -40,7 +40,7 @@ export default function TourBox(props){
         <div id='image'  onMouseOver={mOver} onMouseLeave={mOut} >
             <div id='image-btn-holder' style={imageHolderStyle}>
             </div>
-                <button id='hide-link' style={linkStyle} >BTN</button>
+                <NavLink id='hide-link' style={linkStyle} to={(`/Tours/${props.detailPage}`)} state={props.pass}  >Check Tour</NavLink>
         </div>
         <div id='info'>
         <div id='tour-name'><b>{props.tourName}</b></div>
@@ -50,7 +50,7 @@ export default function TourBox(props){
             <p className='paragraph'><b>Languages: </b> English, Spanish, German, French</p>
         </div>
         </div>
-        <NavLink id='chectour-link'>Check Tour</NavLink>
+        
         
     </div>
 }
