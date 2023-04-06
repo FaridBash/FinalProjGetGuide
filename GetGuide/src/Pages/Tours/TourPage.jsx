@@ -33,11 +33,34 @@ export default function TourPage(){
 
 
     return <div id='tour-page'>
-        <div id='tour-show'>
+       { chosenTour && <div id='tour-show'>
             <div id='tour-name-box'>
                 <h2>{chosenTour.tourName}</h2>
             </div>
             <div id='show-image'></div>
-        </div>
+            <div id='middle-section'>
+                <div id='tour-info'>
+                    <div id='tour-overview'>
+                        <h4>Tour Over View</h4>
+                        {chosenTour.tourDescription}
+                        <h4>Sites During the Tour</h4>
+                        {chosenTour.sitesDuringtheTour.map((s)=>{
+                            if(s){
+                                return(<div> <p><span class="fa-solid fa-location-dot" style={{color: "#BAF801",}}> </span> {s}</p></div>);
+                            }
+                        })}
+                    </div>
+                    <div id='tou-highlights'>
+                        <h3>Highlights - {chosenTour.tourName} Tour</h3>
+                        {chosenTour.highlights.map((s)=>{
+                            if(s){
+                                return(<div> <p><span class="fa-solid fa-star" style={{color: "#BAF801",}}> </span> {s}</p></div>);
+                            }
+                        })}
+                    </div>
+                </div>
+                <div id='contact-us'></div>
+            </div>
+        </div>}
     </div>
 }
