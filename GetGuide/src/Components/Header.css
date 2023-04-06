@@ -27,7 +27,9 @@
     align-items: center;
     position: sticky;
 } */
-
+#header-logo{
+    padding: 0.4rem 0;
+}
 #header-bar{
     width: 70vw;
     height: 8vh;
@@ -56,12 +58,15 @@
     
     color: #BAF801;
     padding-bottom: 0.4rem;
+    padding-top: 0.4rem;
+
     font-size: 12px;
+    
     border: 2px solid transparent;
 }
 
 .header-navlink:hover{
-    border-bottom:2px dashed #BAF801;
+    border-bottom:2px solid #BAF801;
     color: #BAF801;
     font-weight: 800;
     box-sizing: border-box;

@@ -1,0 +1,23 @@
+
+
+#tours-page{
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-wrap: wrap; */
+    overflow-y: scroll;
+    background: #051A35;
+}
+
+
+#tours-display{
+    width:70%;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem;
+}

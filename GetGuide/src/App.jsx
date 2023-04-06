@@ -7,6 +7,7 @@ import Header from './Components/Header';
 import Home from './Pages/HomePage';
 import Chat from './Pages/Chat';
 import AdminDash from './Pages/AdminDash';
+import Tours from './Pages/Tours/Tours';
 const route = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +20,10 @@ const route = createBrowserRouter([
        {
         path:'/Dashboard',
         element:<AdminDash/>
+      },
+       {
+        path:'/Tours',
+        element:<Tours/>
       },
       // {
       //   path:'*',
