@@ -6,7 +6,7 @@ import './App.css'
 import Header from './Components/Header';
 import Home from './Pages/HomePage';
 import Chat from './Pages/Chat';
-import AdminDash from './Pages/AdminDash';
+import AdminDash from './Pages/Dashboards/AdminDash'
 import Tours from './Pages/Tours/Tours';
 import TourPage from './Pages/Tours/TourPage';
 import ToursPerCity from './Pages/Tours/ToursPerCity';

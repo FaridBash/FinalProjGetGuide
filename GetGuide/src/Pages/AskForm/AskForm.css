@@ -1,7 +1,7 @@
 
 #askForm-container{
-    width: 85%;
-    height: 100%;
+    width: 15rem;
+    height: 30rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,7 +19,8 @@
 }
 
 #ask-form{
-    height: 100%;
+    width: 15rem;
+    height: 20rem;
     display: flex;
     flex-direction: column;
     align-items: center;

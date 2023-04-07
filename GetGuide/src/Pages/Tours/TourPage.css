@@ -1,101 +1,151 @@
+#tour-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #051a35;
+  color: aliceblue;
+  /* overflow-y: scroll; */
+  position: relative;
+}
+#image-holder {
+  height: 50vh;
+  position: sticky;
+  top: 0rem;
+}
+#tour-page section {
+  position: sticky;
+  top: 0;
+}
 
+#header-image {
+  width: 100vw;
+  height: 100vh;
+  /* background: url('../../assets/jerusalem.jpg')no-repeat center center/cover; */
+  /* position: fixed; */
+  top: 0rem;
+  margin-top: 8vh;
+}
 
-#tour-page{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background:#051A35;
-    color: aliceblue;
-    /* overflow-y: scroll; */
-    position: relative;
+#myImage {
+  width: 100vw;
+  height: 50vh;
+}
+
+#tour-show-holder {
+  width: 100vw;
+  height: max-content;
+  /* background:#051A35 ; */
+  margin-top: 60rem;
+  /* z-index: 5; */
+  /* overflow-y: scroll; */
+  background: #304352; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #d7d2cc,
+    #304352
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #d7d2cc,
+    #304352
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+#tour-show {
+  width: 50vw;
+  margin-top: -2rem;
+  color: #304352;
+  /* background: #044883; */
+  /* background: #fff; */
+  box-sizing: border-box;
+  padding: 2rem 5rem 5rem;
+  border-radius: 10px;
+  box-shadow: rgba(247, 243, 243, 0.673) 0px 3px 6px,
+    rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  position: relative;
+  margin: auto;
+  background: #304352; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #d7d2cc,
+    #304352
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #d7d2cc,
+    #304352
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     
 }
-#image-holder{
-    height: 50vh;
-    position: sticky;
-    top: 0rem;
- 
-}
-#tour-page section{
-    position: sticky;
-    top: 0;
-   
+
+#show-image {
+  width: 100%;
+  height: 10rem;
+  background: url("../../assets/test.jpg") no-repeat center center/cover;
 }
 
-#header-image{
-    width: 100vw;
-    height: 100vh;
-    /* background: url('../../assets/jerusalem.jpg')no-repeat center center/cover; */
-    /* position: fixed; */
-    top: 0rem;
-    margin-top: 8vh;
-    
+#tour-sites {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }
 
-#myImage{
-    width: 100vw;
-    height: 50vh;
+#site-holder {
+  width: 30%;
 }
 
-#tour-show-holder{
-    width: 100vw;
-    height: max-content;
-    background:#051A35 ;
-    margin-top: 60rem;
-    /* z-index: 5; */
-    /* overflow-y: scroll; */
-
-}
-#tour-show{
-    width: 50%;    
-    margin-top: -2rem;
-    background: #044883;
-    /* background: #fff; */
-    box-sizing: border-box;
-    padding: 2rem 5rem 5rem;
-    border-radius: 10px;
-    box-shadow: rgba(247, 243, 243, 0.673) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    position: relative;
+#divider {
+  width: 100vw;
+  height: fit-content;
+  display: flex;
+  /* align-items: center; */
+  /* align-items: center; */
+  justify-content: center;
+  position: relative;
+  /* background: #fff; */
 }
 
-#show-image{
-    width: 100%;
-    height: 10rem;
-    background: url('../../assets/test.jpg')no-repeat center center/cover;
+#form-holder {
+  width: 25vw;
+  height: 100%;
+  position: sticky;
+  top: 0;
+  right: 0;
+  /* position: fixed;
+    top: 0; */
+  /* right: 8rem;
+    bottom: 5rem; */
 }
 
-
-#tour-sites{
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-evenly;
+#control-btns {
+  width: 15vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* background-color: aliceblue; */
+  position: sticky;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 2rem;
 }
 
-#site-holder{
-    width: 30%;
-
+.control-btns-link {
+  width: max-content;
+  padding: 0.5rem;
+  background: grey;
+  border-radius: 15px;
+  color: aliceblue;
+  margin: 1rem;
 }
 
-
-#divider{
-    width: 100vw;
-    height: fit-content;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    position: relative;
-}
-
-#form-holder{
-    width: fit-content;
-    height: 25rem;
-    position: sticky;
-    right: 8rem;
-    bottom: 5rem;
+.control-btns-link:hover {
+  background: #baf801;
+  color: #051a35;
 }

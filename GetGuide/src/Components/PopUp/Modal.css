@@ -1,0 +1,81 @@
+
+#modal{
+    width: 20rem;
+    height: 20rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* background: #fff; */
+    padding: 50px;
+    z-index: 1000;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    background: #536976;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #292E49, #536976);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #292E49, #536976); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+
+#overLay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+
+}
+
+#tour-auction-info{
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#date-picker{
+    width: 50%;
+    border-radius: 15px;
+    border: 1px solid transparent;
+    margin-left: 1rem;
+    background: #fff;
+    color: #333;
+}
+
+#date-div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#modal-lang-div{
+    width: 100%;
+}
+
+#modal-btns-div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#desired-price-holder{
+    width: 100%;
+    margin: 1rem;
+}
+#desired-price{
+    background: #fff;
+    width: 63%;
+    height: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid transparent;
+    padding: 1rem;
+    box-sizing: border-box;
+    color: #333;
+}

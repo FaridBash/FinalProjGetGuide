@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
 import './TourPage.css'
 import myImage from'../../assets/jerusalem.jpg'
 import AskForm from '../AskForm/AskForm';
+import Modal from '../../Components/PopUp/Modal';
 
 
 export default function TourPage(){
-
+    const [isOpen, setIsOpen]=useState(false);
     const [chosenTour, setChosenTour]=useState(undefined);
 
     useEffect(()=>{
@@ -42,13 +43,18 @@ export default function TourPage(){
 
         <section id='tour-show-holder'>
         <div id='divider'>
-                
+        
+        <div id='control-btns' >
+            <NavLink className="control-btns-link" onClick={()=>{setIsOpen(true)}}>Open Auction</NavLink>
+            
+            <NavLink className="control-btns-link" to={`/ToursPerCity/${params.city}`}>Back To Tours Page</NavLink>
+        </div>
                 
        { chosenTour && <div id='tour-show'>
             <div id='tour-name-box'>
                 <h2>{chosenTour.tourName}</h2>
             </div>
-            
+            <Modal open={isOpen} onClose={()=>{setIsOpen(false)}} tourName={chosenTour.tourName} tourId={chosenTour._id} city={chosenTour.city}>Fancy text</Modal>
             <div id='show-image'></div>
             <div id='middle-section'>
                 <div id='tour-info'>
