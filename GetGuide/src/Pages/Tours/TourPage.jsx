@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import './TourPage.css'
-
+import myImage from'../../assets/jerusalem.jpg'
 
 
 export default function TourPage(){
@@ -34,12 +34,12 @@ export default function TourPage(){
 
     return <div id='tour-page'>
         <div id='image-holder'>
-        {chosenTour && <div id='header-image'>
-            
-            </div>}
+        {chosenTour && <section id='header-image'>
+            <img src={myImage} alt="" id='myImage' />
+            </section>}
         </div>
 
-        <div id='tour-show-holder'>
+        <section id='tour-show-holder'>
        { chosenTour && <div id='tour-show'>
             <div id='tour-name-box'>
                 <h2>{chosenTour.tourName}</h2>
@@ -69,6 +69,6 @@ export default function TourPage(){
                 <div id='contact-us'></div>
             </div>
         </div>}
-        </div>
+        </section>
     </div>
 }
