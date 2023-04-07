@@ -1,0 +1,20 @@
+
+
+
+#tours-per-city-page{
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    background: #051A35;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#tours-per-city-show{
+    width: 50%;
+    height: 100%;
+    margin-top: 10rem;
+    display: flex;
+    flex-wrap: wrap;
+}

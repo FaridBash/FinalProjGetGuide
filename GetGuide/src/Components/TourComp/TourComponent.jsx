@@ -4,7 +4,7 @@ import './TourComponent.css'
 
 
 export default function TourBox(props){
-    let location = useLocation();
+    
     const [imageHolderStyle, setImageHolderStyle]=useState({})
     const [linkStyle, setLinkStyle]=useState({});
     const mOver=()=>{
@@ -40,7 +40,7 @@ export default function TourBox(props){
         <div id='image'  onMouseOver={mOver} onMouseLeave={mOut} >
             <div id='image-btn-holder' style={imageHolderStyle}>
             </div>
-                <NavLink id='hide-link' style={linkStyle} to={(`/Tours/${props.detailPage}`)} state={props.pass}  >Check Tour</NavLink>
+                <NavLink id='hide-link' style={linkStyle} to={(`/ToursPerCity/${props.city}/${props.detailPage}`)} state={props.pass}  >Check Tour</NavLink>
         </div>
         <div id='info'>
         <div id='tour-name'><b>{props.tourName}</b></div>

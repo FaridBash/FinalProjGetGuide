@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import TourBox from "../../Components/TourComp/TourComponent";
 import "./Tours.css";
 
 export default function Tours() {
-    const location = useLocation();
-    const state = location.state;
+  const location = useLocation();
+  const params = useParams();
+  console.log("params.city:", params);
   const [tours, setTours] = useState(undefined);
   useEffect(() => {
     getTours();
   }, []);
-  useEffect(() => {
-    console.log("Tours: ", tours);
-  }, [tours]);
 
   async function getTours() {
     const headers = new Headers();
@@ -20,8 +18,13 @@ export default function Tours() {
     await fetch(`http://localhost:6363/api/tours`)
       .then((res) => res.json())
       .then((res) => {
-        setTours((tours) => res);
-        console.log("res", res);
+        const toursInCity = res.filter((e) => {
+          if (e.city.toLowerCase() === params.city.toLowerCase()) {
+            return e;
+          }
+        });
+
+        setTours((tours) => toursInCity);
       });
   }
 
@@ -30,7 +33,14 @@ export default function Tours() {
       <div id="tours-display">
         {Array.isArray(tours) &&
           tours.map((t) => {
-            return <TourBox tourName={t.tourName} detailPage={`./${t._id}`} pass={t._id} />;
+            return (
+              <TourBox
+                tourName={t.tourName}
+                detailPage={`./${t._id}`}
+                city={t.city}
+                pass={t._id}
+              />
+            );
           })}
       </div>
     </div>
