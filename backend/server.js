@@ -27,6 +27,7 @@ server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended:false}));
 server.use(express.json());
 server.use('/api/tours', require('./routes/toursRoutes.js'));
+server.use('/api/', require('./routes/auctionRoutes'));
 server.use(errorHandler);
 
 

@@ -14,6 +14,7 @@ export default function Modal(props) {
     if(startDate!=undefined){
 
         console.log(auction);
+        fetchAuction(auction);
     }
   }, [auction]);
   if (!props.open) return null;
@@ -34,6 +35,16 @@ export default function Modal(props) {
     setAuction(aucObj);
     
   }
+
+
+  async function fetchAuction(obj) {
+    const response = await fetch("http://localhost:6363/api/tours/Dashboard/Auctions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(obj),
+    });
+  }
+
 
   return (
     <>
@@ -62,7 +73,7 @@ export default function Modal(props) {
           </div>
         </div>
         <div id="modal-btns-div">
-          <button onClick={openAuctionHandler}>Open Auction</button>
+          <button onClick={()=>{openAuctionHandler(); {props.onClose()}}}>Open Auction</button>
           <button onClick={props.onClose}>close</button>
         </div>
       </div>
