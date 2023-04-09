@@ -19,6 +19,10 @@ const auctionSchema = mongoose.Schema(
       type: Date,
       required: true,
     },
+    auctionEndDate: {
+      type: Date,
+      required: true,
+    },
 
     auctionCity:{
         type: String,
@@ -27,6 +31,18 @@ const auctionSchema = mongoose.Schema(
     auctionDesiredPrice: {
       type: Number,
       required: true,
+    },
+    auctionBids:{
+        type:Array,
+        required: true
+    },
+    auctionIsOpen:{
+        type:Boolean,
+        required: true
+    },
+    auctionUserRef:{
+        type:String,
+        required: true
     },
    
   },

@@ -14,11 +14,8 @@ export default function AdminDash() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const tourObj = {};
-  
-   
+
     const tour = {
-     
       tourName: tourNameRef.current.value,
       tourDescription: tourDescriptionRef.current.value,
       sitesDuringtheTour: tourSitesRef.current.value
@@ -45,12 +42,7 @@ export default function AdminDash() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(obj),
     });
-
-    // const responseData = await response.json();
-    // console.log(responseData);
   }
-
- 
 
   return (
     <div id="admin-page">
@@ -128,9 +120,8 @@ export default function AdminDash() {
             ref={tourCityRef}
           />
         </div>
-        
+
         <button>Add Tour</button>
-        
       </form>
     </div>
   );

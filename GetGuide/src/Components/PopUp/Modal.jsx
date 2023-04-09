@@ -6,45 +6,47 @@ import "./Modal.css";
 
 export default function Modal(props) {
   const [startDate, setStartDate] = useState(undefined);
+  const [endDate, setEndDate] = useState(undefined);
   const [option, setOption] = useState("");
   const [auction, setAuction] = useState({});
-  const desiredPriceInputRef=useRef(null);
+  const desiredPriceInputRef = useRef(null);
 
   useEffect(() => {
-    if(startDate!=undefined){
-
-        console.log(auction);
-        fetchAuction(auction);
+    if (startDate != undefined) {
+      fetchAuction(auction);
     }
   }, [auction]);
   if (!props.open) return null;
 
   const handleChange = (selectedOption) => {
     setOption(selectedOption);
-    console.log(selectedOption);
   };
 
-  const openAuctionHandler=()=>{
-    const aucObj={};
-    aucObj.tourName=props.tourName;
-    aucObj.tourId=props.tourId;
-    aucObj.language=option.value;
-    aucObj.city=props.city;
-    aucObj.date=new Date(startDate);
-    aucObj.desiredPrice=desiredPriceInputRef.current.value;
+  const openAuctionHandler = () => {
+    const aucObj = {};
+    aucObj.tourName = props.tourName;
+    aucObj.tourId = props.tourId;
+    aucObj.language = option.value;
+    aucObj.city = props.city;
+    aucObj.date = new Date(startDate);
+    aucObj.endDate = new Date(endDate);
+    aucObj.desiredPrice = desiredPriceInputRef.current.value;
+    aucObj.bids=[];
+    aucObj.isOpen=true;
+    aucObj.userRef='';
     setAuction(aucObj);
-    
-  }
-
+  };
 
   async function fetchAuction(obj) {
-    const response = await fetch("http://localhost:6363/api/tours/Dashboard/Auctions", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(obj),
-    });
+    const response = await fetch(
+      "http://localhost:6363/api/tours/Dashboard/Auctions",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(obj),
+      }
+    );
   }
-
 
   return (
     <>
@@ -56,7 +58,7 @@ export default function Modal(props) {
             <b>Tour Name:</b> {props.tourName}.
           </p>
           <div id="modal-lang-div">
-          <LangSelect handleChange={handleChange} />
+            <LangSelect handleChange={handleChange} />
           </div>
           <div id="date-div">
             <p id="date-div-p">
@@ -68,12 +70,38 @@ export default function Modal(props) {
               id="date-picker"
             />
           </div>
+          <div id="date-div">
+          <p id="date-div-p">
+              <b>End By: </b>{" "}
+            </p>
+            <DatePicker
+              selected={endDate}
+              onChange={(date) => setEndDate(new Date(date))}
+              id="date-picker"
+            />
+          </div>
           <div id="desired-price-holder">
-          <input type="number" id="desired-price" min={0} placeholder="Desired Price in $" ref={desiredPriceInputRef} required/>
+            <input
+              type="number"
+              id="desired-price"
+              min={0}
+              placeholder="Desired Price in $"
+              ref={desiredPriceInputRef}
+              required
+            />
           </div>
         </div>
         <div id="modal-btns-div">
-          <button onClick={()=>{openAuctionHandler(); {props.onClose()}}}>Open Auction</button>
+          <button
+            onClick={() => {
+              openAuctionHandler();
+              {
+                props.onClose();
+              }
+            }}
+          >
+            Open Auction
+          </button>
           <button onClick={props.onClose}>close</button>
         </div>
       </div>

@@ -34,14 +34,11 @@ export default function TourPage(){
       }
 
 
-    return <div id='tour-page'>
-        <div id='image-holder'>
-        {chosenTour && <section id='header-image'>
-            <img src={myImage} alt="" id='myImage' />
-            </section>}
-        </div>
+    return (
+    // <div id='tour-page'>
+      
 
-        <section id='tour-show-holder'>
+        // <section id='tour-show-holder'>
         <div id='divider'>
         
         <div id='control-btns' >
@@ -49,8 +46,8 @@ export default function TourPage(){
             
             <NavLink className="control-btns-link" to={`/ToursPerCity/${params.city}`}>Back To Tours Page</NavLink>
         </div>
-                
-       { chosenTour && <div id='tour-show'>
+        <div id='tour-show'>      
+       { chosenTour && <div id='tour-view'>
             <div id='tour-name-box'>
                 <h2>{chosenTour.tourName}</h2>
             </div>
@@ -82,10 +79,12 @@ export default function TourPage(){
                 <div id='contact-us'></div>
             </div>
         </div>}
+        </div>
         <div id='form-holder'>
         <AskForm></AskForm>
         </div>
         </div>
-        </section>
-    </div>
+        // </section>
+    // </div>
+    )
 }

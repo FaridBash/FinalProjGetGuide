@@ -1,0 +1,9 @@
+#page{
+    height: 50vh;
+}
+
+#signedin{
+    height: 2rem;
+    width: 10rem;
+    background-color: #fff;
+}

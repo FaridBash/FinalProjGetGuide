@@ -31,8 +31,12 @@ const setAuction=asyncHandler( async (req, res)=>{
         auctionTourId: req.body.tourId,
         auctionLanguage: req.body.language,
         auctionDate: req.body.date,
+        auctionEndDate: req.body.endDate,
         auctionCity: req.body.city,
         auctionDesiredPrice: req.body.desiredPrice,
+        auctionBids: req.body.bids,
+        auctionIsOpen: req.body.isOpen,
+        auctionUserRef: req.body.userRef,
         
     })
 

@@ -1,64 +1,36 @@
-#tour-page {
+/* #tour-page {
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: baseline;
   background: #051a35;
   color: aliceblue;
-  /* overflow-y: scroll; */
-  position: relative;
-}
-#image-holder {
-  height: 50vh;
-  position: sticky;
-  top: 0rem;
-}
-#tour-page section {
-  position: sticky;
-  top: 0;
-}
-
-#header-image {
-  width: 100vw;
-  height: 100vh;
-  /* background: url('../../assets/jerusalem.jpg')no-repeat center center/cover; */
-  /* position: fixed; */
-  top: 0rem;
-  margin-top: 8vh;
-}
-
-#myImage {
-  width: 100vw;
-  height: 50vh;
 }
 
 #tour-show-holder {
   width: 100vw;
-  height: max-content;
-  /* background:#051A35 ; */
   margin-top: 60rem;
-  /* z-index: 5; */
-  /* overflow-y: scroll; */
-  background: #304352; /* fallback for old browsers */
+  background: #304352;
   background: -webkit-linear-gradient(
     to top,
     #d7d2cc,
     #304352
-  ); /* Chrome 10-25, Safari 5.1-6 */
+  ); 
   background: linear-gradient(
     to top,
     #d7d2cc,
     #304352
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  ); 
 }
+
 #tour-show {
   width: 50vw;
-  margin-top: -2rem;
+  min-height: 90vh;
+  
   color: #304352;
-  /* background: #044883; */
-  /* background: #fff; */
+
   box-sizing: border-box;
   padding: 2rem 5rem 5rem;
   border-radius: 10px;
@@ -66,18 +38,17 @@
     rgba(0, 0, 0, 0.23) 0px 3px 6px;
   position: relative;
   margin: auto;
-  background: #304352; /* fallback for old browsers */
+  background: #304352; 
   background: -webkit-linear-gradient(
     to right,
     #d7d2cc,
     #304352
-  ); /* Chrome 10-25, Safari 5.1-6 */
+  ); 
   background: linear-gradient(
     to right,
     #d7d2cc,
     #304352
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
+  );
 }
 
 #show-image {
@@ -101,25 +72,19 @@
 
 #divider {
   width: 100vw;
-  height: fit-content;
+  
   display: flex;
-  /* align-items: center; */
-  /* align-items: center; */
+  
   justify-content: center;
-  position: relative;
-  /* background: #fff; */
+
 }
 
 #form-holder {
   width: 25vw;
-  height: 100%;
+  height: 92%;
   position: sticky;
-  top: 0;
-  right: 0;
-  /* position: fixed;
-    top: 0; */
-  /* right: 8rem;
-    bottom: 5rem; */
+  top: 10%;
+  right: 2rem;
 }
 
 #control-btns {
@@ -128,10 +93,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* background-color: aliceblue; */
   position: sticky;
-  top: 0;
-  left: 0;
+  top: 10%;
+  left: 0rem;
   box-sizing: border-box;
   padding: 2rem;
 }
@@ -148,4 +112,65 @@
 .control-btns-link:hover {
   background: #baf801;
   color: #051a35;
+} */
+
+
+
+#divider{
+  width: 90vw;
+  /* min-height: 90vh; */
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  margin-top: 10rem;
+  background: red;
+}
+
+#control-btns{
+  width: fit-content;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* position: sticky; */
+  /* top: 10%;
+  left: 0rem; */
+  box-sizing: border-box;
+  padding: 2rem;
+  /* background: red; */
+}
+
+.control-btns-link{
+  width:10rem;
+  padding: 0.5rem;
+  background: #051A35;
+  border-radius: 15px;
+  color: aliceblue;
+  margin: 1rem;
+  text-align: center;
+}
+
+.control-btns-link:hover {
+  background: #baf801;
+  color: #051a35;
+}
+
+
+#tour-show{
+  width: 50%;
+  min-height: 90vh;
+  color: #304352;
+  box-sizing: border-box;
+  background: #304352;
+  
+ 
+}
+
+#tour-view{
+  width: 80%;
+  min-height: 90vh;
+  color: #fff;
+  box-sizing: border-box;
+padding: 2rem;
+  /* overflow-y: scroll; */
 }
