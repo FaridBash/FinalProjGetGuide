@@ -1,5 +1,5 @@
 
-#modal{
+#modal1{
     width: 20rem;
     height: fit-content;
     position: fixed;
@@ -20,7 +20,7 @@
 }
 
 
-#overLay{
+#overLay1{
     position: fixed;
     top: 0;
     left: 0;

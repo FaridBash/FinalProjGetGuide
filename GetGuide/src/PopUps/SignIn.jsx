@@ -14,8 +14,8 @@ export default function SignInModal(props) {
 
   return (
     <>
-      <div id="overLay" />
-      <div id="modal">
+      <div id="overLay1" />
+      <div id="modal1">
         <h1>Modal</h1>
         <button onClick={props.onClose}>close</button>
     </div>

@@ -34,6 +34,7 @@ export default function Modal(props) {
     aucObj.bids=[];
     aucObj.isOpen=true;
     aucObj.userRef='';
+    aucObj.wonBy='';
     setAuction(aucObj);
   };
 

@@ -11,6 +11,7 @@ import Tours from './Pages/Tours/Tours';
 import TourPage from './Pages/Tours/TourPage';
 import ToursPerCity from './Pages/Tours/ToursPerCity';
 import SignIn from './Pages/SignIn/SignIn';
+import Signup from './Pages/SignUp/Signup';
 const route = createBrowserRouter([
   {
     path: "/",
@@ -39,6 +40,10 @@ const route = createBrowserRouter([
        {
         path:'/SignIn/',
         element:<SignIn/>
+      },
+       {
+        path:'/SignUp/',
+        element:<Signup/>
       },
       // {
       //   path:'*',

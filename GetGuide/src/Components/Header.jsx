@@ -5,7 +5,7 @@ import "./Header.css";
 
 export default function Header() {
 
-  const [isSignInOpen, setIsSignInOpen]=useState(false);
+  
   const LinkStyles=({isActive})=>{
     console.log('isActive',isActive);
     return {
@@ -29,8 +29,8 @@ export default function Header() {
           <NavLink className='header-navlink'  to={'/signin'}>SignIn</NavLink>
         </ul>
       </div>
+      
       <div id="outlet">
-      <SignInModal open={isSignInOpen} onClose={()=>{setIsSignInOpen(false)}} />
         <Outlet/>
       </div>
     </div>

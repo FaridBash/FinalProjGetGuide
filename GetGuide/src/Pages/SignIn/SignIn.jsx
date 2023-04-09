@@ -51,24 +51,28 @@ export default function SignIn() {
 
 
   return (
-    <div id="page">
-      <h1>Sign In page</h1>
-      <form action="" onSubmit={login}>
+    <div id="signin-page">
+      
+      <form action="" onSubmit={login} id="signin-form">
+        <div id="welcome-message">
+        <p> <b> Welcome</b></p>
+        <p>to GetGuide</p>
+        </div>
         <input
           type="email"
-          id="signin-email"
+          className="signin-input"
           ref={emailSignInInputRef}
           placeholder="Email"
         />
         <input
           type="password"
-          id="signin-password"
+          className="signin-input"
           ref={passwordSignInInputRef}
           placeholder="Password"
         />
         <button type="submit">signin</button>
       </form>
-      <form action="" onSubmit={register}>
+      {/* <form action="" onSubmit={register}>
         <input
           type="email"
           id="signup-email"
@@ -83,8 +87,8 @@ export default function SignIn() {
         />
         <button type="submit">signup</button>
      <h3 id="signedin">{user?.email}</h3>
-      </form>
-      <button onClick={logout}>SignOut</button>
+      </form> */}
+      {/* <button onClick={logout}>SignOut</button> */}
     </div>
   );
 }

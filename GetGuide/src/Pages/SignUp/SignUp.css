@@ -1,0 +1,36 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#signup-page{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#signup-form{
+    width:20rem;
+    height: 30rem;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 3rem;
+
+}
+
+#signup-form input{
+    height: 1.5rem;
+    background: rgb(189, 188, 188);
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+
+}

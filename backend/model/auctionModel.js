@@ -3,6 +3,11 @@ const { boolean } = require("yargs");
 
 const auctionSchema = mongoose.Schema(
   {
+    user:{
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User'
+    },
     auctionTourName: {
       type: String,
       required: true,
@@ -41,6 +46,10 @@ const auctionSchema = mongoose.Schema(
         required: true
     },
     auctionUserRef:{
+        type:String,
+        required: true
+    },
+    auctionWonBy:{
         type:String,
         required: true
     },

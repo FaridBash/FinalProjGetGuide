@@ -37,6 +37,7 @@ const setAuction=asyncHandler( async (req, res)=>{
         auctionBids: req.body.bids,
         auctionIsOpen: req.body.isOpen,
         auctionUserRef: req.body.userRef,
+        auctionWonBy:req.body.wonBy,
         
     })
 
