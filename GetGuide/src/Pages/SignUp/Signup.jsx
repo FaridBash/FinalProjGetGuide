@@ -17,12 +17,13 @@ export default function Signup(){
     const roleInputRef=useRef(null);
 
     onAuthStateChanged(auth, (currentUser)=>{
-        setUserInMongo(currentUser);
+        setUser(currentUser);
     })
 
     useEffect(()=>{
         if(userToMongoReg!=undefined){
-            setUser(userToMongoReg);
+            console.log('userToMongoReg',userToMongoReg);
+            setUserInMongo(userToMongoReg);
         }
     },[userToMongoReg])
     const register= async (e)=>{
@@ -42,7 +43,8 @@ export default function Signup(){
         mongoUser.email=emailInputRef.current.value;
         mongoUser.role=roleInputRef.current.value;
         mongoUser.auctions=[];
-        mongoUser.languages=(langaugeInputRef.current.value).split(' ');
+        mongoUser.languages=(langaugeInputRef.current.value).split(" ")
+        .map((languages) => languages.trim());
         setUserToMongoReg(mongoUser);
       }
 
