@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import { useCookies } from 'react-cookie';
 import { auth } from "../../firebase.config";
 export default function SignIn() {
   const emailSignInInputRef = useRef(null);
@@ -13,7 +14,7 @@ export default function SignIn() {
   const emailSignUpInputRef = useRef(null);
   const passwordSignUpInputRef = useRef(null);
   const [user, setUSer] = useState({});
-  const [userInMongo, setUSerInMongo] = useState(undefined);
+  const [cookies, setCookie] = useCookies(['myCookie']);
 
   onAuthStateChanged(auth, (currentUser) => {
     setUSer(currentUser);
@@ -21,6 +22,7 @@ export default function SignIn() {
 
   useEffect(() => {
     signInUserFromMomgo(user);
+    
   }, [user]);
 
   const login = async (e) => {
@@ -48,12 +50,8 @@ export default function SignIn() {
     });
     const responseData = await response.json();
     console.log(responseData);
-
-    // Convert the object to a string
-    const cookieUser = JSON.stringify(responseData);
-
-    // Set the cookie with a name and a value
-    document.cookie = "user" + cookieUser;
+    setCookie('getguideuser', JSON.stringify(responseData), { path: '/' });
+    
   }
 
   return (

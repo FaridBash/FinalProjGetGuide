@@ -3,10 +3,12 @@ import './HomePage.css'
 import { useState } from 'react';
 import SignInModal from '../PopUps/SignIn';
 
+
+
 export default function Home(){
 
     const [isSignInOpen, setIsSignInOpen]=useState(false);
-
+    
     return <div id='page-container'>
             <SignInModal open={isSignInOpen} onClose={()=>{setIsSignInOpen(false)}} />
          <div id="header-text">
