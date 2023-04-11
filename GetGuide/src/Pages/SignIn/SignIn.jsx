@@ -8,13 +8,15 @@ import {
 } from "firebase/auth";
 import { useCookies } from 'react-cookie';
 import { auth } from "../../firebase.config";
+import { useNavigate } from "react-router-dom";
 export default function SignIn() {
+  const navigate=useNavigate();
   const emailSignInInputRef = useRef(null);
   const passwordSignInInputRef = useRef(null);
   const emailSignUpInputRef = useRef(null);
   const passwordSignUpInputRef = useRef(null);
   const [user, setUSer] = useState({});
-  const [cookies, setCookie] = useCookies(['myCookie']);
+  const [cookies, setCookie] = useCookies(['getguideuser']);
 
   onAuthStateChanged(auth, (currentUser) => {
     setUSer(currentUser);
@@ -33,14 +35,13 @@ export default function SignIn() {
         emailSignInInputRef.current.value,
         passwordSignInInputRef.current.value
       );
+      navigate(-1);
       console.log("user", user);
     } catch (error) {
       console.log(error.message);
     }
   };
-  const logout = async () => {
-    const signO = await signOut(auth);
-  };
+ 
 
   async function signInUserFromMomgo(obj) {
     const response = await fetch("http://localhost:6363/api/users/login", {
@@ -51,6 +52,7 @@ export default function SignIn() {
     const responseData = await response.json();
     console.log(responseData);
     setCookie('getguideuser', JSON.stringify(responseData), { path: '/' });
+    console.log(cookies);
     
   }
 
