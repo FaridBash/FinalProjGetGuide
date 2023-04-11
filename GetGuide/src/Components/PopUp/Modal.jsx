@@ -8,11 +8,12 @@ export default function Modal(props) {
   const [startDate, setStartDate] = useState(undefined);
   const [endDate, setEndDate] = useState(undefined);
   const [option, setOption] = useState("");
-  const [auction, setAuction] = useState({});
+  const [auction, setAuction] = useState(undefined);
   const desiredPriceInputRef = useRef(null);
 
   useEffect(() => {
-    if (startDate != undefined) {
+    if (auction != undefined) {
+      console.log(auction);
       fetchAuction(auction);
     }
   }, [auction]);
@@ -33,20 +34,27 @@ export default function Modal(props) {
     aucObj.desiredPrice = desiredPriceInputRef.current.value;
     aucObj.bids=[];
     aucObj.isOpen=true;
-    aucObj.userRef='';
-    aucObj.wonBy='';
+  
+    aucObj.wonBy='nobody';
     setAuction(aucObj);
   };
 
   async function fetchAuction(obj) {
+    const token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzM1MGM4ZTZlYTAwYjVkODg5MjRlMiIsImlhdCI6MTY4MTE2MzQyNywiZXhwIjoxNjgzNzU1NDI3fQ.TM_oDYgpQ241OLWFQCGI1CfZDQFTiQHgepKOES1zi4o'
     const response = await fetch(
-      "http://localhost:6363/api/tours/Dashboard/Auctions",
+      "http://localhost:6363/api/Auctions",
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },        
         body: JSON.stringify(obj),
       }
     );
+    const result = await response.json();
+    console.log(result);
+    return result;
   }
 
   return (

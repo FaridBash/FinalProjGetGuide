@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import {auth} from '../../firebase.config'
+
 import './SignUp.css'
 
 
