@@ -32,6 +32,39 @@ export default function AvailableAuctions() {
     return result;
   }
 
+
+  async function updateHandler(itemId, biObj) {
+    console.log("object"," ",biObj);
+    let updatedbids;
+    const myAuc = auctions.find((e) => {
+      console.log('myAuc', e.auctionBids);
+      if (e._id === itemId) {
+        console.log('updatedbids',updatedbids);
+        updatedbids=[biObj, ...e.auctionBids];
+        return e;
+      }
+    });
+
+    try {
+      fetch(`http://localhost:6363/api/Auctions/${itemId}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          auctionBids: updatedbids,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => console.log("res", data));
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+
+
+
   return (
     <div id="user-open-auctions">
         <div id='auctions-container'>
@@ -47,6 +80,9 @@ export default function AvailableAuctions() {
                 endDate={e.auctionEndDate}
                 city={e.auctionCity}
                 tourId={e.auctionTourId}
+                putBid={updateHandler}
+                auctionId={e._id}
+                numOfBids={e.auctionBids.length}
                 />
                 );
             })}

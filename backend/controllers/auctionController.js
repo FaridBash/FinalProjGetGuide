@@ -44,7 +44,7 @@ const setAuction=asyncHandler( async (req, res)=>{
         auctionEndDate: req.body.endDate,
         auctionCity: req.body.city,
         auctionDesiredPrice: req.body.desiredPrice,
-        auctionBids: req.body.bids,
+        auctionBids: req.body.auctionBids,
         auctionIsOpen: req.body.isOpen,
        
         auctionWonBy:req.body.wonBy,
@@ -55,6 +55,29 @@ const setAuction=asyncHandler( async (req, res)=>{
     res.status(200).json(auction);
 
 });
+
+//@desc Update Auction
+//@route PUT /api/auctions/:id
+//@access Public
+const updateAuction=asyncHandler( async (req, res)=>{
+    console.log(req.body);
+ 
+     const auction=await Auctions.findById(req.params.id);
+     if(auction){
+        
+         const updatedAuction=await Auctions.findByIdAndUpdate(req.params.id, req.body, {
+             new: true,
+         });
+     
+         res.status(200).json(updatedAuction)
+     }else{
+         if(!auction){
+             res.status(400)
+             throw new Error('Auction NOT FOUND');
+         }
+     }
+ 
+ })
 
 
  //@desc Delete Auction
@@ -75,4 +98,4 @@ const deleteAuction= asyncHandler(async (req, res)=>{
 })
 
 
-module.exports={getAuctions, getAuctionById, setAuction, deleteAuction }
+module.exports={getAuctions, getAuctionById, setAuction, deleteAuction, updateAuction }

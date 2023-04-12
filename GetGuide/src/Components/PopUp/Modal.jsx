@@ -32,7 +32,7 @@ export default function Modal(props) {
     aucObj.date = new Date(startDate);
     aucObj.endDate = new Date(endDate);
     aucObj.desiredPrice = desiredPriceInputRef.current.value;
-    aucObj.bids=[];
+    aucObj.auctionBids=[];
     aucObj.isOpen=true;
   
     aucObj.wonBy='nobody';
