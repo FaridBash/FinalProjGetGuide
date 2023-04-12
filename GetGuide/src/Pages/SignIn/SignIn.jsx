@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { useCookies } from 'react-cookie';
+// import { useCookies } from 'react-cookie';
 import { auth } from "../../firebase.config";
 import { useNavigate } from "react-router-dom";
 export default function SignIn() {
@@ -16,7 +16,8 @@ export default function SignIn() {
   const emailSignUpInputRef = useRef(null);
   const passwordSignUpInputRef = useRef(null);
   const [user, setUSer] = useState({});
-  const [cookies, setCookie] = useCookies('');
+  const [userFromLocal, setUserFromLocal] = useState({});
+  // // // const [cookies, setCookie] = useCookies('');
 
   onAuthStateChanged(auth, (currentUser) => {
     setUSer(currentUser);
@@ -26,6 +27,10 @@ export default function SignIn() {
     signInUserFromMomgo(user);
     
   }, [user]);
+  useEffect(() => {
+    console.log(userFromLocal);
+    
+  }, [userFromLocal]);
 
   const login = async (e) => {
     e.preventDefault();
@@ -51,8 +56,10 @@ export default function SignIn() {
     });
     const responseData = await response.json();
     console.log(responseData);
-    setCookie('getguideuser', JSON.stringify(responseData), { path: '/' });
-    console.log(cookies);
+    localStorage.setItem('user',JSON.stringify(responseData));
+    setUserFromLocal(responseData);
+    // setCookie('getguideuser', JSON.stringify(responseData), { path: '/' });
+    // console.log(cookies);
     
   }
 

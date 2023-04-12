@@ -31,10 +31,9 @@
 } */
 #header-logo{
     padding: 0.4rem 0;
-    background: rgb(216,198,144);
-background: linear-gradient(27deg, rgba(216,198,144,1) 0%, rgba(231,217,84,1) 21%, rgba(190,158,68,1) 31%, rgba(231,217,84,1) 46%, rgba(203,178,106,1) 55%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    /* background: rgb(216,198,144);
+     */
+    color: #e8e008;
     font-family: 'Monoton', cursive;
 }
 #header-bar{

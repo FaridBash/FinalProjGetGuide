@@ -1,11 +1,14 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { useEffect } from 'react';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import './TouristDashboard.css'
 
 
 
 export default function TouristDashboard(){
-    
-    
+    const nav=useNavigate();
+    useEffect(()=>{
+        nav('/Dashboard/userDashboard/openAuctions');
+    },[])
 
     return <div id='TouristDashboard-page'>
 

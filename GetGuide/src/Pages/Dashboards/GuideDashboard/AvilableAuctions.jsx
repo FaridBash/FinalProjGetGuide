@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import AuctionComp from "../../../Components/auctions/AuctionComp";
-import "./UserOpenAuctions.css";
+import "../UserDashBoard/UserOpenAuctions.css";
 
-export default function UserOpenAuctionsPage() {
+export default function AvailableAuctions() {
   const [auctions, setAuctions] = useState(undefined);
 
   useEffect(() => {

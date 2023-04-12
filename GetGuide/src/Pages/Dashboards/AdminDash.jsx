@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import "./AdminDash.css";
+import GuideDashboard from "./GuideDashboard/GuideDashboard";
+import TouristDashboard from "./UserDashBoard/TouristDashboard";
 
 export default function AdminDash() {
   const [tour, setTour] = useState(undefined);
-
+  const [role, setRole]=useState(JSON.parse(localStorage.getItem('user')).role??null)
   const tourNameRef = useRef(null);
   const tourDescriptionRef = useRef(null);
   const tourSitesRef = useRef(null);
@@ -11,6 +13,23 @@ export default function AdminDash() {
   const tourimagesRef = useRef(null);
   const tourPriceRef = useRef(null);
   const tourCityRef = useRef(null);
+  
+
+
+  if (role === 'admin') {
+
+    // return <AdminDashboard />;
+  } else if (role === 'tourist') {
+    console.log("TOurist role", role);
+    return <TouristDashboard/>
+  } else if (role === 'guide') {
+    return <GuideDashboard/>
+  } else {
+    return <LoginPage />;
+  }
+
+
+
 
   function handleSubmit(e) {
     e.preventDefault();

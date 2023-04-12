@@ -14,6 +14,9 @@ import SignIn from './Pages/SignIn/SignIn';
 import Signup from './Pages/SignUp/Signup';
 import TouristDashboard from './Pages/Dashboards/UserDashBoard/TouristDashboard';
 import UserOpenAuctionsPage from './Pages/Dashboards/UserDashBoard/UserOpenAuctions';
+import AvailableAuctions from './Pages/Dashboards/GuideDashboard/AvilableAuctions';
+import GuideDashboard from './Pages/Dashboards/GuideDashboard/GuideDashboard';
+
 const route = createBrowserRouter([
   {
     path: "/",
@@ -54,6 +57,16 @@ const route = createBrowserRouter([
           {
             path:'/Dashboard/userDashboard/openAuctions',
             element:<UserOpenAuctionsPage/>
+          },
+        ]
+      },
+       {
+        path:'/Dashboard/guideDashboard/',
+        element:<GuideDashboard/>,
+        children: [
+          {
+            path:'/Dashboard/guideDashboard/Auctions',
+            element:<AvailableAuctions/>
           },
         ]
       },

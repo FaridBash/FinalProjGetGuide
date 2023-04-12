@@ -10,22 +10,22 @@ import {
 import "./Header.css";
 
 export default function Header() {
-  const [cookies, setCookie, removeCookie] = useCookies(["getguideuser"]);
-  const [user, setUser] = useState();
+  // const [cookies, setCookie, removeCookie] = useCookies(["getguideuser"]);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user'))??undefined);
   const [userRole, setUserRole] = useState();
   const navigate=useNavigate();
 
-  useEffect(() => {
-    if (cookies.getguideuser != undefined) {
-      console.log("cookies", cookies.getguideuser.role);
-      setUser(cookies.getguideuser);
-    }
-  }, [cookies]);
+  // useEffect(() => {
+  //   if (cookies.getguideuser != undefined) {
+  //     console.log("cookies", cookies.getguideuser.role);
+  //     setUser(cookies.getguideuser);
+  //   }
+  // }, [cookies]);
 
   useEffect(()=>{
-    if(user!=undefined){
+    if(user){
       setUserRole(user.role);
-      console.log('userRole',userRole);
+      console.log('userRole',user.role);
     }
   },[user])
 
@@ -38,14 +38,17 @@ export default function Header() {
     };
   };
   const logout = async () => {
-    Cookies.remove('getguideuser');
-    removeCookie(["getguideuser"]);
+    // Cookies.remove('getguideuser');
+    // Cookies.remove('undefined');
+    // removeCookie(["getguideuser"]);
     // removeCookie('undefined');
-    setCookie('');
-    // document.cookie = `getguideuser=; expires=${Date.now()}; path=/;`;
-    console.log("object",document.cookie);
+    // document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+    // setCookie();
+    // console.log("object",document.cookie);
+    localStorage.setItem('user',null);
+    setUser(undefined);
     const signO = await signOut(auth);
-    // navigate('/');
+    navigate('/');
   };
   return (
     <div id="main-container">
@@ -76,7 +79,7 @@ export default function Header() {
         </ul>
         </div>
         <div id="welcome-user-div">
-          {cookies['getguideuser'] != undefined? <div id="name-holder"><p>Weclome {cookies.getguideuser.name}</p> 
+          {user != undefined? <div id="name-holder"><p>Weclome {user.name}</p> 
           <NavLink className="header-navlink" onClick={logout}>
           Logout
         </NavLink></div>:<NavLink className="header-navlink" to={"/signin"}>
