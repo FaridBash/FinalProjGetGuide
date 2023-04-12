@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import SignInModal from "../PopUps/SignIn";
 import { useCookies } from "react-cookie";
 import { auth } from "../firebase.config";
+import Cookies from 'js-cookie';
 import {
   signOut,
 } from "firebase/auth";
@@ -12,6 +13,7 @@ export default function Header() {
   const [cookies, setCookie, removeCookie] = useCookies(["getguideuser"]);
   const [user, setUser] = useState();
   const [userRole, setUserRole] = useState();
+  const navigate=useNavigate();
 
   useEffect(() => {
     if (cookies.getguideuser != undefined) {
@@ -30,16 +32,20 @@ export default function Header() {
   const LinkStyles = ({ isActive }) => {
     console.log("isActive", isActive);
     return {
-      borderBottom: isActive ? "2px solid #BAF801" : "",
-      borderTop: isActive ? "2px solid #BAF801" : "",
+      borderBottom: isActive ? "2px solid rgb(240,229,7,1)" : "",
+      borderTop: isActive ? "2px solid rgb(240,229,7,1)" : "",
       // backgoundColor: isActive? '':''
     };
   };
   const logout = async () => {
+    Cookies.remove('getguideuser');
+    removeCookie(["getguideuser"]);
+    // removeCookie('undefined');
+    setCookie('');
+    // document.cookie = `getguideuser=; expires=${Date.now()}; path=/;`;
+    console.log("object",document.cookie);
     const signO = await signOut(auth);
-    removeCookie('getguideuser');
-    removeCookie('undefined');
-    
+    // navigate('/');
   };
   return (
     <div id="main-container">

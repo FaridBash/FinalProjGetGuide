@@ -15,7 +15,7 @@ export default function Home(){
             <h1 id="header-h1">Enjoy a Perfect Tour</h1>
             <p id="header-p">Find the best Tours and Excursion at the best price</p>
             <NavLink to={'/ToursPerCity'} id='ourtours-link' >OUR TOURS</NavLink>
-            <NavLink className='header-navlink'  onClick={()=>{setIsOpen(true)}}>SignIn</NavLink>
+            {/* <NavLink className='header-navlink'  onClick={()=>{setIsOpen(true)}}>SignIn</NavLink> */}
 
         </div>
         <div id="black-div">

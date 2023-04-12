@@ -1,10 +1,12 @@
 const express=require('express');
-const auctionsRouter=express.Router();
+const router=express.Router();
 
 const {getAuctions, getAuctionById, setAuction, deleteAuction}=require('../controllers/auctionController')
-
-auctionsRouter.route('/Dashboard/Auctions').get(getAuctions).post(setAuction);
-auctionsRouter.route('/Dashboard/Auctions/:id').delete(deleteAuction).get(getAuctionById);
+const {protect} = require('../middleware/authMiddleware');
 
 
-module.exports=auctionsRouter;
+router.route('/').get(protect, getAuctions).post(protect, setAuction);
+router.route('/:id').delete(protect, deleteAuction).get(protect, getAuctionById);
+
+
+module.exports=router;

@@ -4,12 +4,12 @@ const {getAuctions, getAuctionById, setAuction, deleteAuction}=require('../contr
 
 
 const {getTours,setTour, getTourById, updateTour, deleteTour}=require('../controllers/toursController')
-
+const { protect } = require('../middleware/authMiddleware');
 router.route('/').get(getTours).post(setTour);
 router.route('/').post(setTour)
 router.route('/:id').delete(deleteTour).put(updateTour).get(getTourById);
 
-router.route('/Dashboard/Auctions').get(getAuctions).post(setAuction);
-router.route('/Dashboard/Auctions/:id').delete(deleteAuction).get(getAuctionById);
+// router.route('/Dashboard/Auctions').get( protect, getAuctions).post(protect, setAuction);
+// router.route('/Dashboard/Auctions/:id').delete(protect, deleteAuction).get(protect, getAuctionById);
 
 module.exports=router;

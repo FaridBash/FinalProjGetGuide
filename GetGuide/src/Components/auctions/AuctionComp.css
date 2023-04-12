@@ -1,0 +1,105 @@
+
+
+#auction-box{
+    width: 100vh;
+    height: 10rem;
+    color: #000;
+    display: flex;
+    align-items: center;
+    margin: 0.5rem;
+    /* background: #ffffff; */
+    background: rgb(78,85,123);
+    background: linear-gradient(0deg, rgba(78,85,123,1) 0%, rgba(255,255,255,1) 100%);
+}
+
+#auction-box-tourinfo{
+    width: 70%;
+    padding: 2rem;
+}
+
+#auction-box-btns{
+    width: 30%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#auction-box p{
+    line-height: 0.8rem;
+    font-size: 13px;
+}
+
+.auction-btn{
+    width: 7rem;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0.2rem 0.4rem;
+    margin: 0.2rem;
+    background: #000;
+
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(circle, rgba(78,85,123,1) 0%, rgba(117,122,152,1) 100%);
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #ede920;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 12px;
+}
+
+#bid-container{
+    width: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#bid-container input{
+    width: 60%;
+    height: 80%;
+    box-sizing: border-box;
+    padding: 1rem;
+    background:#3B425D ;
+    color: #ede920;
+    
+}
+#bid-container .auction-btn{
+    width: 30%;
+    display: flex;
+}
+.auction-btn:focus {
+  /* box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset; */
+  color: #ede920;
+}
+
+.auction-btn:hover {
+  /* box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset; */
+  transform: translateY(-1px);
+  color: #ede920;
+}
+
+.auction-btn:active {
+  transform: translateY(1px);
+}

@@ -16,7 +16,7 @@ export default function SignIn() {
   const emailSignUpInputRef = useRef(null);
   const passwordSignUpInputRef = useRef(null);
   const [user, setUSer] = useState({});
-  const [cookies, setCookie] = useCookies(['getguideuser']);
+  const [cookies, setCookie] = useCookies('');
 
   onAuthStateChanged(auth, (currentUser) => {
     setUSer(currentUser);

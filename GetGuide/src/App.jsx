@@ -13,6 +13,7 @@ import ToursPerCity from './Pages/Tours/ToursPerCity';
 import SignIn from './Pages/SignIn/SignIn';
 import Signup from './Pages/SignUp/Signup';
 import TouristDashboard from './Pages/Dashboards/UserDashBoard/TouristDashboard';
+import UserOpenAuctionsPage from './Pages/Dashboards/UserDashBoard/UserOpenAuctions';
 const route = createBrowserRouter([
   {
     path: "/",
@@ -47,9 +48,16 @@ const route = createBrowserRouter([
         element:<Signup/>
       },
        {
-        path:'/userDashboard/',
-        element:<TouristDashboard/>
+        path:'/Dashboard/userDashboard/',
+        element:<TouristDashboard/>,
+        children: [
+          {
+            path:'/Dashboard/userDashboard/openAuctions',
+            element:<UserOpenAuctionsPage/>
+          },
+        ]
       },
+       
       // {
       //   path:'*',
       //   element:<NoPath/>

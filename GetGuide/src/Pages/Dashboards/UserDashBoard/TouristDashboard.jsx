@@ -11,7 +11,7 @@ export default function TouristDashboard(){
 
         <div id='TouristDashboard-side-menu'>
             <ul>
-            <NavLink className="side-menu-links">Open Auctions</NavLink>
+            <NavLink className="side-menu-links" to={'/Dashboard/userDashboard/openAuctions'}>Open Auctions</NavLink>
             <NavLink className="side-menu-links">Closed Auctions</NavLink>
             <NavLink className="side-menu-links">Edit Profile</NavLink>
             </ul>

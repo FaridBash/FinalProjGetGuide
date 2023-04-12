@@ -1,14 +1,24 @@
 
 const asyncHandler=require('express-async-handler');
 const Auctions=require('../model/auctionModel')
-
+const User=require('../model/userModel');
 //@desc Get Auctions
 //@route GET /api/auctions
 //@access Private
-const getAuctions=asyncHandler( async (req, res)=>{
-    const auctions=await Auctions.find();
-    res.status(200).json(auctions);
-})
+
+// const getAuctions=asyncHandler( async (req, res)=>{
+//     const auctions=await Auctions.find({ user: req.user.id });
+//     res.status(200).json(auctions);
+//     if(!auctions){
+//         res.status(200).json({user: req.user.id })
+//     }
+// })
+
+const getAuctions = asyncHandler(async (req, res) => {
+    const auctions = await Auctions.find({ user: req.user.id })
+  
+    res.status(200).json(auctions)
+  })
 
 //@desc Get Auctions
 //@route GET /api/auctions/:id
@@ -36,8 +46,9 @@ const setAuction=asyncHandler( async (req, res)=>{
         auctionDesiredPrice: req.body.desiredPrice,
         auctionBids: req.body.bids,
         auctionIsOpen: req.body.isOpen,
-        auctionUserRef: req.body.userRef,
+       
         auctionWonBy:req.body.wonBy,
+        user: req.user.id,
         
     })
 

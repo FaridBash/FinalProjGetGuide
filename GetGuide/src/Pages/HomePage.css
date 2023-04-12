@@ -29,8 +29,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: #051A35;
-    opacity: 0.6;
+    background: rgb(59,66,93);
+    background: linear-gradient(27deg, rgba(59,66,93,1) 40%, rgba(78,85,123,1) 100%, rgba(255,255,255,1) 100%);
+    opacity: 0.4;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,7 +42,7 @@
 
 #header-text{
     width: 50vw;
-    height: 20vh;
+    height: 30vh;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -50,13 +51,20 @@
     position: absolute;
     top: 12rem;
     z-index: 1;
-    
+   
 }
 #header-h1{
     margin: 0;
     font-family: 'Dancing Script', cursive;
     font-size: 4rem;
 }
+#header-h1, #header-p{
+    background: rgb(203,178,106);
+    background: linear-gradient(172deg, rgba(203,178,106,1) 9%, rgba(236,249,30,1) 19%, rgba(203,178,106,1) 38%, rgba(240,229,7,1) 47%, rgba(203,178,106,1) 66%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 #header-p, #ourtours-link{
     font-size: 20px;
     font-family: 'Source Code Pro', monospace;
@@ -64,16 +72,19 @@
 }
 
 #ourtours-link{
-    color: #BAF801;
-    background: #051A35;
+    color: rgb(240,229,7,1);
+    background: rgb(59,66,93);
+    background: linear-gradient(27deg, rgba(59,66,93,1) 40%, rgba(78,85,123,1) 100%, rgba(255,255,255,1) 100%);
     padding: 0.5rem 2rem;
     border-radius: 10px;
+    
     
 }
 
 
 
 #ourtours-link:hover{
-    background: #BAF801;
-    color: #051A35;
+    background: rgb(203,178,106);
+    background: linear-gradient(172deg, rgba(203,178,106,1) 9%, rgba(236,249,30,1) 19%, rgba(203,178,106,1) 38%, rgba(240,229,7,1) 47%, rgba(203,178,106,1) 66%);
+    color: rgb(59,66,93,1);
 }

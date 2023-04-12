@@ -46,7 +46,7 @@ const registerUser= asyncHandler (async (req, res)=>{
 
 //post
 const loginUser= asyncHandler(async (req, res)=>{
-    res.json({message: "LoginUSer"})
+   
     const {email}=req.body
     const user=await User.findOne({email})
     if(user){
@@ -57,15 +57,21 @@ const loginUser= asyncHandler(async (req, res)=>{
             role:user.role,
             auctions:user.auctions,
             languages: user.languages,
-            token: generateToken(user._id)
+            token: generateToken(user.id)
         })
+        // res.json(user);
     }
-    res.json({message:'login User'});
 })
 
 
 const getUser= asyncHandler(async (req, res)=>{
-    res.json({message: "RegisterUSer"})
+   const {_id, name, email}=await User.findById(req.user.id)
+
+   res.status(200).json({
+    id: _id,
+    name,
+    email,
+   })
 })
 
 
