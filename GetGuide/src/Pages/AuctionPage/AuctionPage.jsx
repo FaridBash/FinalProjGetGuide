@@ -12,18 +12,23 @@ export default function AuctionPage() {
   const params = useParams();
   const [aucID, setAucID] = useState(params.id);
   const [numofBidsFDBRecieved, setNumOfBidsFDBRecieved] = useState("");
-  const [numofBidsFDB, setNumOfBidsFDB] = useState("");
+  const [numofBidsFDB, setNumOfBidsFDB] = useState([]);
   const [room, setRoom] = useState("");
-
+  const [userRole, setUserRole]=useState(JSON.parse(localStorage.getItem('user')).role);
+  const [user, setUser]=useState(JSON.parse(localStorage.getItem('user')));
+  const [newBid, setNewBid]=useState([]);
   console.log("params._id",params);
 
   useEffect(() => {
     getAuction();
+    
   }, []);
+  
+  
   useEffect(() => {
-    if (!auction) return;
-    console.log(auction);
-    setRoom(auction.auctionId);
+    if (auction){
+      setRoom(params.aucid);
+    }
   }, [auction]);
 
   useEffect(() => {
@@ -31,12 +36,15 @@ export default function AuctionPage() {
       joinRoom();
     }
   }, [room]);
+  useEffect(() => {
+    console.log("newBid",newBid);
+      sendBid();
+  }, [newBid]);
 
   useEffect(() => {
     socket.on("recieve-bid", (data) => {
-      setNumOfBidsFDBRecieved(data.numofBidsFDB);
-      console.log("numofBidsFDBRecieved", numofBidsFDBRecieved);
-      console.log("numofBidsFDBRecieved", room);
+      setNumOfBidsFDBRecieved(JSON.stringify(data.numofBidsFDB));
+      updateAuctionWithNewBid(data.newBid);
     });
   }, [socket]);
 
@@ -54,48 +62,89 @@ export default function AuctionPage() {
   async function getAuction() {
     const headers = new Headers();
     headers.append("content-type", "application/json");
-    await fetch(`http://localhost:6363/api/Auctions/${params.id}`)
+    await fetch(`http://localhost:6363/api/Auctions/${params.aucid}`)
       .then((res) => res.json())
       .then((res) => {
         setAuction(res);
-        console.log("res", res);
+        console.log("res GETTING AUCTION", res);
       });
   }
 
   const submitNewBid = (id) => {
-    console.log("auction id to put bid", id);
     const bidderObj = {};
     bidderObj.bidderId = user._id;
     bidderObj.bidderName = user.name;
-    bidderObj.bid = bidAmountInputRef.current.value;
     if (bidAmountInputRef != null) {
       {
-        props.putBid(id, bidderObj);
+        bidderObj.bid = bidAmountInputRef.current.value;
       }
-      bidAmountInputRef.current.value = "";
     }
+    console.log('bidderObj', bidderObj);
+      setNumOfBidsFDB([...numofBidsFDB, bidderObj]);
+      setNewBid(bidderObj);
+      
+      // sendBid();
+   
 
-    setNumOfBidsFDB(bidAmountInputRef.current.value);
-    sendBid();
+    bidAmountInputRef.current.value="";
   };
+
+
+  async function updateHandler(itemId, biObj) {
+    
+    let updatedbids=[];
+    updatedbids=[...auction.auctionBids, biObj];
+    console.log('updatedbidssssssssssssssssssssssssssssssssss',updatedbids);
+    try {
+      fetch(`http://localhost:6363/api/Auctions/${itemId}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          auctionBids: updatedbids,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => console.log("data from updatehandler",data));
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+
+
+  function updateAuctionWithNewBid(newBid) {
+    setAuction((prevAuction) => {
+      const updatedBids = [...prevAuction.auctionBids, newBid];
+      return { ...prevAuction, auctionBids: updatedBids };
+    });
+  }
+
 
   return (
     <div id="auction-page">
-      <div id="auctionpage-aucinfo">
         {auction && (
+      <div id="auctionpage-aucinfo">
             <p>{auction.auctionTourName}</p>
-        //   <AuctionComp
-        //     tourName={auction.auctionTourName}
-        //     Date={auction.auctionDate}
-        //     endDate={auction.auctionEndDate}
-        //     lang={auction.auctionLanguage}
-        //     submitNewBid={submitNewBid}
-        //     bidAmountInputRef={bidAmountInputRef}
-        //   />
+            <p>{auction.auctionDate}</p>
+            <p>{auction.auctionEndDate}</p>
+            <p>{auction.auctionLanguage}</p>     
+        </div>
         )}
-      </div>
 
-      <div id="bids-container">{numofBidsFDBRecieved}</div>
+      <div id="bids-container">
+        <div id="realtime-auction">
+
+        {numofBidsFDBRecieved}
+        </div>
+        <input type="number" placeholder="bid.." ref={bidAmountInputRef} onChange={(e)=>{
+
+          // setNumOfBidsFDB([...numofBidsFDB, ]e.target.value);
+          // setBid(e.target.value);
+        }} />
+        <button onClick={()=>{submitNewBid(params.aucid)}}>Add bid</button>
+        </div>
     </div>
   );
 }

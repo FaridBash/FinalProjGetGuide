@@ -9,4 +9,24 @@
     justify-content: center;
 }
 
+#auctionpage-aucinfo{
+    width: 50vw;
+    height: 20vh;
+    background: rebeccapurple;
+}
 
+#bids-container{
+    width: 50vw;
+    height: 30vh;
+    background: green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#realtime-auction{
+    width: 50%;
+    height: 30%;
+    background: red;
+}

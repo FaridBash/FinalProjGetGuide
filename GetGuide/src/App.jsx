@@ -69,13 +69,13 @@ const route = createBrowserRouter([
             path:'/Dashboard/guideDashboard/Auctions',
             element:<AvailableAuctions/>
           },
-          {
-            path:'/Dashboard/guideDashboard/Auctions/:id',
-            element:<AuctionPage/>
-          },
         ]
       },
-       
+      {
+        path:'/Dashboard/guideDashboard/Auctions/:aucid',
+        element:<AuctionPage/>
+      },
+      
       // {
       //   path:'*',
       //   element:<NoPath/>
