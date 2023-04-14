@@ -35,10 +35,7 @@ export default function TourPage(){
 
 
     return (
-    // <div id='tour-page'>
-      
-
-        // <section id='tour-show-holder'>
+    
         <div id='divider'>
         
         <div id='control-btns' >
@@ -84,7 +81,5 @@ export default function TourPage(){
         <AskForm></AskForm>
         </div>
         </div>
-        // </section>
-    // </div>
     )
 }

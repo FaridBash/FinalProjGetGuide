@@ -16,6 +16,7 @@ import TouristDashboard from './Pages/Dashboards/UserDashBoard/TouristDashboard'
 import UserOpenAuctionsPage from './Pages/Dashboards/UserDashBoard/UserOpenAuctions';
 import AvailableAuctions from './Pages/Dashboards/GuideDashboard/AvilableAuctions';
 import GuideDashboard from './Pages/Dashboards/GuideDashboard/GuideDashboard';
+import AuctionPage from './Pages/AuctionPage/AuctionPage';
 
 const route = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const route = createBrowserRouter([
           {
             path:'/Dashboard/guideDashboard/Auctions',
             element:<AvailableAuctions/>
+          },
+          {
+            path:'/Dashboard/guideDashboard/Auctions/:id',
+            element:<AuctionPage/>
           },
         ]
       },

@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import AuctionComp from "../../../Components/auctions/AuctionComp";
 import "../UserDashBoard/UserOpenAuctions.css";
 
 export default function AvailableAuctions() {
   const [auctions, setAuctions] = useState(undefined);
+  const location = useLocation();
 
+  const state = location.state;
   useEffect(() => {
     getAuctions();
   }, []);
@@ -83,6 +86,7 @@ export default function AvailableAuctions() {
                 putBid={updateHandler}
                 auctionId={e._id}
                 numOfBids={e.auctionBids.length}
+                // pass={e}
                 />
                 );
             })}

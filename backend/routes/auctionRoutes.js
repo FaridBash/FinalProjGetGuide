@@ -6,7 +6,7 @@ const {protect} = require('../middleware/authMiddleware');
 
 
 router.route('/').get(protect, getAuctions).post(protect, setAuction);
-router.route('/:id').delete(protect, deleteAuction).get(protect, getAuctionById).put(updateAuction);
+router.route('/:id').delete(protect, deleteAuction).get( getAuctionById).put(updateAuction);
 
 
 module.exports=router;

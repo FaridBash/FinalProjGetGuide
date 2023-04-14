@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
     margin: 0.5rem;
+    margin-bottom: 5rem;
     background: #CECEE6;
     /* background: rgb(78,85,123);
     background: linear-gradient(0deg, rgba(78,85,123,1) 0%, rgba(255,255,255,1) 100%); */
