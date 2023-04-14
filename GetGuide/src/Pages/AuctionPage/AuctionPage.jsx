@@ -40,6 +40,11 @@ export default function AuctionPage() {
     console.log("newBid",newBid);
       sendBid();
   }, [newBid]);
+  useEffect(() => {
+    if(numofBidsFDBRecieved){
+      setNumOfBidsFDB(JSON.parse(numofBidsFDBRecieved));
+    }
+  }, [numofBidsFDBRecieved]);
 
   useEffect(() => {
     socket.on("recieve-bid", (data) => {
