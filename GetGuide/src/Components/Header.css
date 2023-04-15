@@ -21,14 +21,7 @@
     color: #333;
 }
 
-/* #header{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: sticky;
-} */
+
 #header-logo{
     padding: 0.4rem 0;
     /* background: rgb(216,198,144);
