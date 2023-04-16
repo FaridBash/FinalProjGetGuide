@@ -1,5 +1,6 @@
 #user-open-auctions{
     width: 100%;
+    min-width: 50vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -12,8 +13,12 @@
 
 #auctions-container{
     width: 100%;
+    
     height: 95%;
     padding: 5rem;
     box-sizing: border-box;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

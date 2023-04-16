@@ -1,16 +1,16 @@
 
 
 #auction-box{
-    width: 100vh;
+    width: 80%;
     height: 10rem;
     color: #000;
     display: flex;
     align-items: center;
     margin: 0.5rem;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
     background: #CECEE6;
-    /* background: rgb(78,85,123);
-    background: linear-gradient(0deg, rgba(78,85,123,1) 0%, rgba(255,255,255,1) 100%); */
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 #auction-box-tourinfo{
@@ -33,7 +33,7 @@
 }
 
 .auction-btn{
-    width: 7rem;
+    width: 50%;
     text-align: center;
     box-sizing: border-box;
     padding: 0.2rem 0.4rem;

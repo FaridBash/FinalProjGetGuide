@@ -181,14 +181,12 @@ function getLowestBid(arr){
   return (
     <div id="auction-page">
         {auction && (
-      <div id="auctionpage-aucinfo">
+      <table id="auctionpage-aucinfo">
             <tr><td > <p className="info-table"> <b> Tour Name: </b> </p> {auction.auctionTourName}</td></tr>
-            {/* <td> <b> Tour Date: </b>{auction.auctionDate}</td> */}
             <tr><td > <p className="info-table"> <b> Tour Date: </b> </p> {getRealDate(auction.auctionDate)} </td></tr>
-            {/* <td> <b> Auction Ends By: </b> {(auction.auctionEndDate)}</td> */}
             <tr><td > <p className="info-table"> <b> Auction Ends By: </b> </p>  {getRealDate(auction.auctionEndDate)}</td></tr>
             <tr><td > <p className="info-table"> <b> Tour Language: </b> </p> {auction.auctionLanguage}</td>     </tr>
-        </div>
+        </table>
         )}
 
       <div id="bids-container">
@@ -197,7 +195,7 @@ function getLowestBid(arr){
             if(index===0){
               return <div id="newest-bid"> <h3>{"Newest Bid: "}{i.bidderName} {' Bid Amount '} {i.bid} {"$"}</h3></div>
             }
-            return <div> <p> {' Guide Name: '} {i.bidderName} {"--- "} {"Bid's Amount: "} {i.bid} {"$"}</p></div>
+            return <div> <p> {"Bid's Amount: "} {i.bid} {"$"}</p></div>
           })}
        
         </div>
@@ -207,8 +205,12 @@ function getLowestBid(arr){
         <button onClick={()=>{submitNewBid(params.aucid)}}>Add bid</button>
         </div>
         <div style={{ height:"1rem", border:"1px solid transparent", boxSizing:"borderBox"} }>
-          {tooHighBid && <div> <h5 style={{color:'red'}}>Bid Not Accepted Try Again</h5> </div>}
+          {tooHighBid && <div> <h5 style={{color:'red'}}>Bid Rejected Try Again</h5> </div>}
           {tooHighBid === false? <div> <h5 style={{color:'green'}}>Bid Accepted</h5> </div>:null}
+          {/* {tooHighBid === undefined ? <div> <h5 style={{color:'green'}}>{""}</h5> </div>:null}
+          {setTimeout(() => {
+            setTooHighBid(undefined);
+          }, 1000)} */}
         </div>
         </div>
         </div>

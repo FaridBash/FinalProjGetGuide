@@ -1,89 +1,91 @@
-#auction-page{
-    width: 100%;
-    height: 100vh;
-    background: white;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+#auction-page {
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-#auctionpage-aucinfo{
-    width: 50vw;
-    height: 50;
-    background: rgb(78,85,123);
-background: linear-gradient(27deg, rgba(78,85,123,1) 0%, rgba(248,248,255,1) 43%, rgba(59,66,93,1) 99%);
-box-sizing: border-box;
-padding: 1rem;
-border-radius: 10px;
-margin-top: 5rem;
-
+#auctionpage-aucinfo {
+  width: 50vw;
+  height: 20vh;
+  background: rgb(78, 85, 123);
+  background: linear-gradient(
+    27deg,
+    rgba(78, 85, 123, 1) 0%,
+    rgba(248, 248, 255, 1) 43%,
+    rgba(59, 66, 93, 1) 99%
+  );
+  box-sizing: border-box;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 5rem;
 }
 
-#bids-container{
-    width: 50vw;
-    height: 50vh;
-    display: flex;
-    /* flex-direction: column; */
-    align-items: center;
-    justify-content: space-around;
-    background: #4e577b;
-    background: linear-gradient(27deg, rgba(78,85,123,1) 0%, rgba(248,248,255,1) 43%, rgba(59,66,93,1) 99%);
-    /* background: linear-gradient(27deg,rgba(59,66,93,1) 40% , rgba(248,248,255,1) 43%,  rgba(78,85,123,1) 50%); */
-    
+#auctionpage-aucinfo tr{
+  height: 10%;
 }
 
-#realtime-auction{
-    width: 60%;
-    height: 80%;
-    background: rgb(78,85,123);
-
-    overflow-y: scroll;
-    box-sizing: border-box;
-    padding: 1rem;
-    border-radius: 15px;
-    color: #fff;
-    
+#bids-container {
+  width: 50vw;
+  height: 50vh;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-around;
+  background: #4e577b;
+  background: linear-gradient(
+    27deg,
+    rgba(78, 85, 123, 1) 0%,
+    rgba(248, 248, 255, 1) 43%,
+    rgba(59, 66, 93, 1) 99%
+  );
+  /* background: linear-gradient(27deg,rgba(59,66,93,1) 40% , rgba(248,248,255,1) 43%,  rgba(78,85,123,1) 50%); */
+  border-radius: 10px;
 }
 
-#realtime-auction::-webkit-scrollbar{
-    display: none;
-  }
+#realtime-auction {
+  width: 60%;
+  height: 80%;
+  background: rgb(78, 85, 123);
 
-  /* #auction-info tr{
-    width: 100%;
-  } */
+  overflow-y: scroll;
+  box-sizing: border-box;
+  padding: 1rem;
+  border-radius: 15px;
+  color: #fff;
+}
 
-   /* #auction-info td{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  } */
+#realtime-auction::-webkit-scrollbar {
+  display: none;
+}
 
-  #newest-bid{
-    color: rgb(224, 224, 29);
-  }
 
-  #bid-controller{
-    width: 10rem;
-    display: flex;
-  }
+#newest-bid {
+  color: rgb(224, 224, 29);
+}
 
-  #bid-controller input{
-    width: 70%;
-    border-radius: 10px 0 0 10px;
-    border: 1px solid transparent;
-    box-sizing: border-box;
-    padding: 1rem;
-  }
+#bid-controller {
+  width: 10rem;
+  display: flex;
+}
 
-  #bid-controller button{
-    /* width: 30%; */
-    border-radius: 0px 10px 10px 0px;
-  }
+#bid-controller input {
+  width: 70%;
+  border-radius: 10px 0 0 10px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  padding: 1rem;
+}
 
-  .info-table{
-    display: inline;
-  }
+#bid-controller button {
+  /* width: 30%; */
+  border-radius: 0px 10px 10px 0px;
+}
+
+.info-table {
+  display: inline;
+}
