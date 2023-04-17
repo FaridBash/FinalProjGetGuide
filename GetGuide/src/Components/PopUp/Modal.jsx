@@ -42,7 +42,7 @@ export default function Modal(props) {
   async function fetchAuction(obj) {
     const token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzM1MGM4ZTZlYTAwYjVkODg5MjRlMiIsImlhdCI6MTY4MTE2MzQyNywiZXhwIjoxNjgzNzU1NDI3fQ.TM_oDYgpQ241OLWFQCGI1CfZDQFTiQHgepKOES1zi4o'
     const response = await fetch(
-      "http://localhost:6363/api/Auctions",
+      "http://localhost:6363/api/Auctions/auction",
       {
         method: "POST",
         headers: {

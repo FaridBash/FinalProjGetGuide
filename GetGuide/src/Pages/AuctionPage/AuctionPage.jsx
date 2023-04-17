@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import AuctionComp from "../../Components/auctions/AuctionComp";
 import io from "socket.io-client";
 
@@ -7,36 +7,59 @@ const socket = io.connect("http://localhost:6363");
 import "./AuctionPage.css";
 
 export default function AuctionPage() {
+  const nav=useNavigate();
   const [auction, setAuction] = useState(undefined);
   const bidAmountInputRef = useRef(null);
   const params = useParams();
   const [aucID, setAucID] = useState(params.id);
   const [numofBidsFDBRecieved, setNumOfBidsFDBRecieved] = useState("");
   const [numofBidsFDB, setNumOfBidsFDB] = useState([]);
-  const [dataToShow, setDataToShow]=useState(undefined);
+  const [dataToShow, setDataToShow] = useState(undefined);
   const [room, setRoom] = useState("");
-  const [userRole, setUserRole]=useState(JSON.parse(localStorage.getItem('user')).role);
-  const [user, setUser]=useState(JSON.parse(localStorage.getItem('user')));
-  const [newBid, setNewBid]=useState([]);
-  console.log("params._id",params);
-  const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
-  const [tooHighBid, setTooHighBid]=useState("");
+  const [userRole, setUserRole] = useState(
+    JSON.parse(localStorage.getItem("user")).role
+  );
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [newBid, setNewBid] = useState([]);
+  const [takeAuction, setTakeAuction] = useState(false);
+  const [auctionIsOpen, setAuctionIsOpen] = useState(true);
+  console.log("params._id", params);
+  const dayNames = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const month = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const [tooHighBid, setTooHighBid] = useState("");
   useEffect(() => {
     getAuction();
-    
   }, []);
-  
- 
- 
+
   useEffect(() => {
-    if (auction){
+    if (auction) {
       setRoom(params.aucid);
       setNumOfBidsFDB(auction.auctionBids);
-      if(numofBidsFDB){
-
+      if (numofBidsFDB) {
         setDataToShow(auction.auctionBids);
       }
+      setAuctionIsOpen(auction.auctionIsOpen);
     }
   }, [auction]);
 
@@ -46,15 +69,15 @@ export default function AuctionPage() {
     }
   }, [room]);
   useEffect(() => {
-    console.log("newBid",newBid);
-      sendBid();
+    console.log("newBid", newBid);
+    sendBid();
   }, [newBid]);
   useEffect(() => {
-    if(numofBidsFDBRecieved){
+    if (numofBidsFDBRecieved) {
       setNumOfBidsFDB(JSON.parse(numofBidsFDBRecieved));
       console.log(JSON.parse(numofBidsFDBRecieved));
       setDataToShow(JSON.parse(numofBidsFDBRecieved));
-      updateHandler(params.aucid, JSON.parse(numofBidsFDBRecieved) );
+      updateHandler(params.aucid, JSON.parse(numofBidsFDBRecieved));
     }
   }, [numofBidsFDBRecieved]);
 
@@ -65,6 +88,8 @@ export default function AuctionPage() {
       updateAuctionWithNewBid(data.newBid);
     });
   }, [socket]);
+
+  useEffect(() => {}, [auctionIsOpen]);
 
   const sendBid = () => {
     socket.emit("send-bid", { numofBidsFDB, room });
@@ -80,7 +105,7 @@ export default function AuctionPage() {
   async function getAuction() {
     const headers = new Headers();
     headers.append("content-type", "application/json");
-    await fetch(`http://localhost:6363/api/Auctions/${params.aucid}`)
+    await fetch(`http://localhost:6363/api/Auctions/auction/${params.aucid}`)
       .then((res) => res.json())
       .then((res) => {
         setAuction(res);
@@ -89,40 +114,41 @@ export default function AuctionPage() {
   }
 
   const submitNewBid = (id) => {
-    if(!compareLowestBidToNewBid(numofBidsFDB, bidAmountInputRef.current.value )  || bidAmountInputRef.current.value<0 ){
-      bidAmountInputRef.current.value ="";
-      setTooHighBid(true);
-      return;
-    } else {
-      setTooHighBid(false);
+    if (!takeAuction) {
+      if (
+        !compareLowestBidToNewBid(
+          numofBidsFDB,
+          bidAmountInputRef.current.value
+        ) ||
+        bidAmountInputRef.current.value < 0
+      ) {
+        bidAmountInputRef.current.value = "";
+        setTooHighBid(true);
+        return;
+      } else {
+        setTooHighBid(false);
+      }
     }
     const bidderObj = {};
-    if(user){
+    if (user) {
       bidderObj.bidderId = user._id;
       bidderObj.bidderName = user.name;
     }
     if (bidAmountInputRef != null) {
       {
-        
         bidderObj.bid = bidAmountInputRef.current.value;
       }
     }
-    console.log('bidderObj', bidderObj);
-      setNumOfBidsFDB([bidderObj, ...numofBidsFDB]);
-      setNewBid(bidderObj);
-   
+    console.log("bidderObj", bidderObj);
+    setNumOfBidsFDB([bidderObj, ...numofBidsFDB]);
+    setNewBid(bidderObj);
 
-    bidAmountInputRef.current.value="";
+    bidAmountInputRef.current.value = "";
   };
 
-
   async function updateHandler(itemId, biObj) {
-    
-    // let updatedbids=[];
-    // updatedbids=[...auction.auctionBids, biObj];
-    // console.log('updatedbidssssssssssssssssssssssssssssssssss',updatedbids);
     try {
-      fetch(`http://localhost:6363/api/Auctions/${itemId}`, {
+      fetch(`http://localhost:6363/api/Auctions/auction/${itemId}`, {
         method: "PUT",
         body: JSON.stringify({
           auctionBids: biObj,
@@ -132,13 +158,32 @@ export default function AuctionPage() {
         },
       })
         .then((res) => res.json())
-        .then((data) => console.log("data from updatehandler",data));
+        .then((data) => console.log("data from updatehandler", data));
     } catch (error) {
       console.log(error);
-      
     }
   }
 
+  function closeAuctionHandler(id) {
+    const winner=getLowestBid(auction);
+    try {
+      fetch(`http://localhost:6363/api/Auctions/auction/${id}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          auctionIsOpen: false,
+          auctionWonBy:winner.bidderName,
+
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => setAuctionIsOpen(false));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   function updateAuctionWithNewBid(newBid) {
     setAuction((prevAuction) => {
@@ -147,7 +192,7 @@ export default function AuctionPage() {
     });
   }
 
-  function compareLowestBidToNewBid(arr, newBid){
+  function compareLowestBidToNewBid(arr, newBid) {
     let minBid = Number.MAX_SAFE_INTEGER;
     for (let i = 0; i < arr.length; i++) {
       let bid = parseInt(arr[i].bid);
@@ -156,64 +201,178 @@ export default function AuctionPage() {
       }
     }
 
-    if(newBid>minBid){
-      return false
+    if (newBid > minBid) {
+      return false;
     }
     return true;
   }
 
-function getLowestBid(arr){
-  let minBid = Number.MAX_SAFE_INTEGER;
+  function getLowestBid(arr) {
+    const winnerObj={};
+    let minBid = Number.MAX_SAFE_INTEGER;
+    let winner = "";
     for (let i = 0; i < arr.length; i++) {
       let bid = parseInt(arr[i].bid);
       if (bid < minBid) {
-        minBid = bid;
+        winnerObj.minBid = bid;
+        winnerObj.winner = arr[i].bidderName;
       }
     }
-    return minBid;
-}
+    return winnerObj;
+  }
 
-  function getRealDate(date){
-
-    return dayNames[new Date(date).getDay()]+', '+(new Date(date).getDate()) +" " +month[new Date(date).getMonth()]+' '+new Date(date).getFullYear();
+  function getRealDate(date) {
+    return (
+      dayNames[new Date(date).getDay()] +
+      ", " +
+      new Date(date).getDate() +
+      " " +
+      month[new Date(date).getMonth()] +
+      " " +
+      new Date(date).getFullYear()
+    );
   }
 
   return (
     <div id="auction-page">
-        {auction && (
-      <table id="auctionpage-aucinfo">
-            <tr><td > <p className="info-table"> <b> Tour Name: </b> </p> {auction.auctionTourName}</td></tr>
-            <tr><td > <p className="info-table"> <b> Tour Date: </b> </p> {getRealDate(auction.auctionDate)} </td></tr>
-            <tr><td > <p className="info-table"> <b> Auction Ends By: </b> </p>  {getRealDate(auction.auctionEndDate)}</td></tr>
-            <tr><td > <p className="info-table"> <b> Tour Language: </b> </p> {auction.auctionLanguage}</td>     </tr>
+      {auction && (
+        <table id="auctionpage-aucinfo">
+          <tr>
+            <td>
+              {" "}
+              <p className="info-table">
+                {" "}
+                <b> Tour Name: </b>{" "}
+              </p>{" "}
+              {auction.auctionTourName}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {" "}
+              <p className="info-table">
+                {" "}
+                <b> Tour Date: </b>{" "}
+              </p>{" "}
+              {getRealDate(auction.auctionDate)}{" "}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {" "}
+              <p className="info-table">
+                {" "}
+                <b> Auction Ends By: </b>{" "}
+              </p>{" "}
+              {getRealDate(auction.auctionEndDate)}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {" "}
+              <p className="info-table">
+                {" "}
+                <b> Tour Language: </b>{" "}
+              </p>{" "}
+              {auction.auctionLanguage}
+            </td>{" "}
+          </tr>
         </table>
-        )}
+      )}
 
       <div id="bids-container">
         <div id="realtime-auction">
-          {dataToShow && dataToShow.map((i, index)=>{
-            if(index===0){
-              return <div id="newest-bid"> <h3>{"Newest Bid: "}{i.bidderName} {' Bid Amount '} {i.bid} {"$"}</h3></div>
-            }
-            return <div> <p> {"Bid's Amount: "} {i.bid} {"$"}</p></div>
-          })}
-       
+          {dataToShow &&
+            dataToShow.map((i, index) => {
+              if (index === 0) {
+                return (
+                  <div id="newest-bid">
+                    {" "}
+                    <h3>
+                      {"Best Bid: "}
+                      {i.bidderName} {" Bid Amount "} {i.bid} {"$"}
+                    </h3>
+                  </div>
+                );
+              }
+              return (
+                <div id="old-bids">
+                  {" "}
+                  <p>
+                    {" "}
+                    {"Bid's Amount: "} {i.bid} {"$"}
+                  </p>
+                </div>
+              );
+            })}
         </div>
         <div>
-        <div id="bid-controller">
-        <input type="number" placeholder="bid.." ref={bidAmountInputRef}/>
-        <button onClick={()=>{submitNewBid(params.aucid)}}>Add bid</button>
+          {auctionIsOpen && (
+            <div id="controller">
+              <div id="bid-controller">
+                <input
+                  type="number"
+                  placeholder="bid.."
+                  ref={bidAmountInputRef}
+                />
+                <button
+                  onClick={() => {
+                    submitNewBid(params.aucid);
+                  }}
+                >
+                  Add bid
+                </button>
+              </div>
+              {userRole && userRole === "tourist" && (
+                <button
+                  onClick={() => {
+                    closeAuctionHandler(params.aucid);
+                  }}
+                >
+                  End Auction
+                </button>
+              )}
+
+              {auction && userRole && userRole === "guide" && (
+                <button
+                  onClick={() => {
+                    setTakeAuction(true);
+                    bidAmountInputRef.current.value =
+                      auction.auctionDesiredPrice;
+                    submitNewBid(params.aucid);
+                    closeAuctionHandler(params.aucid);
+                  }}
+                >
+                  Take it for {auction.auctionDesiredPrice} $
+                </button>
+              )}
+            </div>
+          )}
+          {!auctionIsOpen && <div><button onClick={()=>{nav(-1)}}>Back To Auctions</button></div>}
+          {!takeAuction && (
+            <div
+              style={{
+                height: "1rem",
+                border: "1px solid transparent",
+                boxSizing: "borderBox",
+              }}
+            >
+              {tooHighBid && (
+                <div>
+                  {" "}
+                  <h5 style={{ color: "red" }}>Bid Rejected Try Again</h5>{" "}
+                </div>
+              )}
+              {tooHighBid === false ? (
+                <div>
+                  {" "}
+                  <h5 style={{ color: "green" }}>Bid Accepted</h5>{" "}
+                </div>
+              ) : null}
+            </div>
+          )}
         </div>
-        <div style={{ height:"1rem", border:"1px solid transparent", boxSizing:"borderBox"} }>
-          {tooHighBid && <div> <h5 style={{color:'red'}}>Bid Rejected Try Again</h5> </div>}
-          {tooHighBid === false? <div> <h5 style={{color:'green'}}>Bid Accepted</h5> </div>:null}
-          {/* {tooHighBid === undefined ? <div> <h5 style={{color:'green'}}>{""}</h5> </div>:null}
-          {setTimeout(() => {
-            setTooHighBid(undefined);
-          }, 1000)} */}
-        </div>
-        </div>
-        </div>
+      </div>
     </div>
   );
 }

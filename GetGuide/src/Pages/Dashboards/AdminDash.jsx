@@ -2,10 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import "./AdminDash.css";
 import GuideDashboard from "./GuideDashboard/GuideDashboard";
 import TouristDashboard from "./UserDashBoard/TouristDashboard";
-
+import SignIn from "../SignIn/SignIn";
+import { useNavigate } from "react-router-dom";
 export default function AdminDash() {
   const [tour, setTour] = useState(undefined);
-  const [role, setRole]=useState(JSON.parse(localStorage.getItem('user')).role??null)
+  const [user, setUser]=useState(JSON.parse(localStorage.getItem('user')) ?? undefined)
+    const [role, setRole]=useState(JSON.parse(localStorage.getItem('user')).role ?? undefined)
   const tourNameRef = useRef(null);
   const tourDescriptionRef = useRef(null);
   const tourSitesRef = useRef(null);
@@ -13,10 +15,18 @@ export default function AdminDash() {
   const tourimagesRef = useRef(null);
   const tourPriceRef = useRef(null);
   const tourCityRef = useRef(null);
-  
+  const nav=useNavigate();
+  useEffect(()=>{
+    if(user){
+      console.log("role is not ava");
+    }else{
+      console.log(role);
+    }
+  },[])
 
+if(user){
 
-  if (role === 'admin') {
+  if (role && role === 'admin') {
 
     // return <AdminDashboard />;
   } else if (role === 'tourist') {
@@ -24,9 +34,14 @@ export default function AdminDash() {
     return <TouristDashboard/>
   } else if (role === 'guide') {
     return <GuideDashboard/>
-  } else {
-    return <LoginPage />;
+  } 
+  else if(!JSON.parse(localStorage.getItem('user'))) {
+    // nav('http://localhost:5173/SignIn')
+    return <SignIn/>
   }
+}else {
+  return nav('http://localhost:5173/SignIn');
+}
 
 
 

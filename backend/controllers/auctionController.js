@@ -15,10 +15,26 @@ const User=require('../model/userModel');
 // })
 
 const getAuctions = asyncHandler(async (req, res) => {
-    const auctions = await Auctions.find({ user: req.user.id })
+    const auctions = await Auctions.find({user: req.user.id})
   
     res.status(200).json(auctions)
   })
+
+//   const getAuctionsForGuide = asyncHandler(async (req, res) => {
+//     console.log("GETAUCTIONS FOR GUIDE CALLED");
+//     // const role = "guide";
+//     const auctions = await Auctions.find();
+  
+//     res.status(200).json(auctions)
+//   })
+
+
+const getAuctionsForGuide = async (req, res) => {
+    const auctions = await Auctions.find();
+    res.json(auctions);
+  };
+  
+
 
 //@desc Get Auctions
 //@route GET /api/auctions/:id
@@ -50,6 +66,7 @@ const setAuction=asyncHandler( async (req, res)=>{
         auctionWonBy:req.body.wonBy,
         user: req.user.id,
         
+        
     })
 
     res.status(200).json(auction);
@@ -60,7 +77,7 @@ const setAuction=asyncHandler( async (req, res)=>{
 //@route PUT /api/auctions/:id
 //@access Public
 const updateAuction=asyncHandler( async (req, res)=>{
-    console.log(req.body);
+    
  
      const auction=await Auctions.findById(req.params.id);
      if(auction){
@@ -98,4 +115,4 @@ const deleteAuction= asyncHandler(async (req, res)=>{
 })
 
 
-module.exports={getAuctions, getAuctionById, setAuction, deleteAuction, updateAuction }
+module.exports={getAuctions, getAuctionById, setAuction, deleteAuction, updateAuction, getAuctionsForGuide }

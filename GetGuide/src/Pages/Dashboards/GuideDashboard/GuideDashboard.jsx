@@ -30,8 +30,8 @@ export default function GuideDashboard(){
             <ul>
             
             <NavLink style={LinkStyles} className="side-menu-links" to={'/Dashboard/guideDashboard/Auctions'}>Auctions</NavLink>
-            <NavLink style={LinkStyles} className="side-menu-links" to={'/Dashboard/guideDashboard/Auctions/closed'}>Closed Auctions</NavLink>
-            <NavLink style={LinkStyles} className="side-menu-links" to={'/Dashboard/guideDashboard/Auctions/tours'}>Tours</NavLink>
+            <NavLink style={LinkStyles} className="side-menu-links" to={'/Dashboard/guideDashboard/ClosedAuctions'}>Closed Auctions</NavLink>
+            <NavLink style={LinkStyles} className="side-menu-links" to={'/Dashboard/guideDashboard/WonTours'}>Tours</NavLink>
             </ul>
         </div>
         

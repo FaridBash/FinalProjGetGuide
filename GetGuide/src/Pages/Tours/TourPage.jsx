@@ -7,6 +7,7 @@ import Modal from '../../Components/PopUp/Modal';
 
 
 export default function TourPage(){
+    const [user, setUser]=useState(JSON.parse(localStorage.getItem('user')) ?? null);
     const [isOpen, setIsOpen]=useState(false);
     const [chosenTour, setChosenTour]=useState(undefined);
 
@@ -37,9 +38,10 @@ export default function TourPage(){
     return (
     
         <div id='divider'>
-        
         <div id='control-btns' >
+            {user === null ? <NavLink className="control-btns-link" to={'http://localhost:5173/SignIn'}>Open Auction</NavLink> : 
             <NavLink className="control-btns-link" onClick={()=>{setIsOpen(true)}}>Open Auction</NavLink>
+            }
             
             <NavLink className="control-btns-link" to={`/ToursPerCity/${params.city}`}>Back To Tours Page</NavLink>
         </div>

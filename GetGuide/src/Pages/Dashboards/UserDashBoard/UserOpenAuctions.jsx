@@ -1,15 +1,24 @@
 import { useEffect, useState } from "react";
 import AuctionComp from "../../../Components/auctions/AuctionComp";
 import "./UserOpenAuctions.css";
+import { useNavigate } from "react-router-dom";
 
 export default function UserOpenAuctionsPage() {
   const [auctions, setAuctions] = useState(undefined);
-
+  const [userToken, setUserToken] = useState(JSON.parse(localStorage.getItem('user')).token ?? undefined);
+  const nav=useNavigate();
   useEffect(() => {
-    getAuctions();
+    if(userToken){
+      getAuctions();
+    } else{
+      nav('http://localhost:5173/signin');
+    }
+
   }, []);
 
-  useEffect(() => {}, [auctions]);
+  useEffect(() => {
+    console.log('auctions user', auctions);
+  }, [auctions]);
 
   async function getAuctions() {
     const headers = new Headers();
@@ -19,7 +28,7 @@ export default function UserOpenAuctionsPage() {
     headers.append("content-type", "application/json");
     headers.append("Authorization", `Bearer ${token}`);
 
-    const response = await fetch("http://localhost:6363/api/Auctions", {
+    const response = await fetch("http://localhost:6363/api/Auctions/auction", {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -47,6 +56,7 @@ export default function UserOpenAuctionsPage() {
                 endDate={e.auctionEndDate}
                 city={e.auctionCity}
                 tourId={e.auctionTourId}
+                auctionId={e._id}
                 />
                 );
             })}

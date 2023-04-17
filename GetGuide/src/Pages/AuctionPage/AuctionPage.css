@@ -25,9 +25,7 @@
   margin-top: 5rem;
 }
 
-#auctionpage-aucinfo tr{
-  height: 10%;
-}
+
 
 #bids-container {
   width: 50vw;
@@ -57,6 +55,8 @@
   padding: 1rem;
   border-radius: 15px;
   color: #fff;
+  position: relative;
+  padding-top: 2rem;
 }
 
 #realtime-auction::-webkit-scrollbar {
@@ -65,9 +65,22 @@
 
 
 #newest-bid {
+  background: green;
+  box-sizing: border-box;
+  font-size: 15px;
+  padding: 0.2rem;
+  text-align: center;
+  border-radius: 25px;
   color: rgb(224, 224, 29);
+  /* position: fixed; */
+  /* margin-top: -10; */
+  /* top: 10; */
+  
 }
 
+#old-bids{
+  /* margin-top: 3rem; */
+}
 #bid-controller {
   width: 10rem;
   display: flex;
@@ -88,4 +101,12 @@
 
 .info-table {
   display: inline;
+}
+
+#controller{
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }

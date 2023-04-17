@@ -68,14 +68,20 @@ export default function Header() {
           >
             TOURS
           </NavLink>
-          
-          <NavLink
+          {user != null ? <NavLink
             to={"/Dashboard"}
             className="header-navlink"
             style={LinkStyles}
           >
             DASHBOARD
-          </NavLink>
+          </NavLink> : <NavLink
+            to={"/Signin"}
+            className="header-navlink"
+            style={LinkStyles}
+          >
+            DASHBOARD
+          </NavLink> }
+          
         </ul>
         </div>
         <div id="welcome-user-div">

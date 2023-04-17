@@ -1,11 +1,13 @@
 #divider {
-  width: 90vw;
+  width: 100vw;
+  height: fit-content;
   display: flex;
   align-items: flex-start;
   gap: 3rem;
-  margin-top: 10rem;
+  margin-top: 2.5rem;
   background: rgb(78,85,123);
-background: linear-gradient(27deg, rgba(78,85,123,1) 0%, rgba(248,248,255,1) 43%, rgba(59,66,93,1) 99%);
+/* background: linear-gradient(27deg, rgba(78,85,123,1) 0%, rgba(248,248,255,1) 43%, rgba(59,66,93,1) 99%); */
+ 
 }
 
 #control-btns {
@@ -36,11 +38,12 @@ background: linear-gradient(27deg, rgba(78,85,123,1) 0%, rgba(248,248,255,1) 43%
 
 #tour-show {
   width: 50%;
-  min-height: 90vh;
+  /* min-height: 90vh; */
   color: #3a415c;
   box-sizing: border-box;
   background: rgb(78,85,123);
   background: linear-gradient(27deg, rgba(78,85,123,1) 0%, rgba(248,248,255,1) 90%, rgba(59,66,93,1) 99%);
+  margin-top: rem;
 }
 
 #tour-view {
