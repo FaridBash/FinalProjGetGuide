@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import AuctionComp from "../../Components/auctions/AuctionComp";
 
 
 
@@ -28,8 +29,8 @@ export default function WonAuctions(){
         const result = await response.json();
           console.log('result', result);
           const myResult=result.filter((e)=>{ 
-            if( e.auctionIsOpen===false){
-                return e.auctionBids.filter((e)=> {return (e.auctionWonBy=== user.name)});
+            if( e.auctionIsOpen===false && e.auctionWonBy === user.name ){
+                return true;
             }
             
           });
@@ -38,7 +39,25 @@ export default function WonAuctions(){
           setAuctions(myResult);
           return result;
       }
-    return <div>
-
+    return <div id="user-open-auctions">
+    <div id="auctions-container">
+      {Array.isArray(auctions) &&
+        auctions.map((e) => {
+            
+          return (
+            <AuctionComp
+              key={e._id}
+              tourName={e.auctionTourName}
+              Date={e.auctionDate}
+              lang={e.auctionLanguage}
+              endDate={e.auctionEndDate}
+              city={e.auctionCity}
+              tourId={e.auctionTourId}
+              auctionId={e._id}
+              numOfBids={e.auctionBids.length}
+            />
+          );
+        })}
     </div>
+  </div>
 }

@@ -2,7 +2,8 @@
   width: 100vw;
   height: fit-content;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   gap: 3rem;
   margin-top: 2.5rem;
   background: rgb(78,85,123);
@@ -15,41 +16,99 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
-  padding: 2rem;
-  margin: auto;
+  /* padding: 2rem; */
+  /* margin: auto; */
 }
 
 .control-btns-link {
-  width: 10rem;
+  width: fit-content;
   padding: 0.5rem;
   background: #051a35;
   border-radius: 15px;
   color: aliceblue;
   margin: 1rem;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .control-btns-link:hover {
-  background: #baf801;
-  color: #051a35;
+  color: #d8df0f;
+ 
 }
 
 #tour-show {
-  width: 50%;
+  width: 80%;
+  height: 80vh;
   /* min-height: 90vh; */
   color: #3a415c;
   box-sizing: border-box;
   background: rgb(78,85,123);
-  background: linear-gradient(27deg, rgba(78,85,123,1) 0%, rgba(248,248,255,1) 90%, rgba(59,66,93,1) 99%);
-  margin-top: rem;
+  /* background: linear-gradient(27deg, rgba(78,85,123,1) 0%, rgba(248,248,255,1) 90%, rgba(59,66,93,1) 99%); */
+  margin-top: 3rem;
+  overflow-y: scroll;
 }
 
+#tour-name-box{
+  height: 4rem;
+  width:fit-content;
+  background: rgb(78,85,123);
+  background: linear-gradient(27deg, rgb(141, 152, 212) 0%, rgba(248,248,255,1) 90%, rgba(59,66,93,1) 99%);
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+#tour-overview{
+  
+  padding: 1rem;
+  margin-top: 1rem;
+  background: rgb(78,85,123);
+  background: linear-gradient(27deg, rgb(141, 152, 212) 0%, rgba(248,248,255,1) 90%, rgba(59,66,93,1) 99%);
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+
+
+#tour-overview h4{
+  width: fit-content;
+  background: rgb(78,85,123);
+  /* background: linear-gradient(27deg, rgb(141, 152, 212) 0%, rgba(248,248,255,1) 90%, rgba(59,66,93,1) 99%); */
+  box-sizing: border-box;
+  color: #d8df0f;
+  padding: 0.5rem;
+  border-radius: 15px;
+}
 #tour-view {
   width: 80%;
   min-height: 90vh;
   color: #3a415c;
   box-sizing: border-box;
   padding: 2rem;
+  
+}
+
+#tou-highlights{
+
+  background: rgb(78,85,123);
+  background: linear-gradient(27deg, rgb(141, 152, 212) 0%, rgba(248,248,255,1) 90%, rgba(59,66,93,1) 99%);
+  box-sizing: border-box;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 15px;
+}
+
+#tou-highlights h3{
+  width: fit-content;
+  background: rgb(78,85,123);
+  /* background: linear-gradient(27deg, rgb(141, 152, 212) 0%, rgba(248,248,255,1) 90%, rgba(59,66,93,1) 99%); */
+  box-sizing: border-box;
+  color: #d8df0f;
+  padding: 0.5rem;
+  border-radius: 15px;
 }

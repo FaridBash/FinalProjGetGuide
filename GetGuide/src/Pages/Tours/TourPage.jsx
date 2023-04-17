@@ -40,7 +40,7 @@ export default function TourPage(){
         <div id='divider'>
         <div id='control-btns' >
             {user === null ? <NavLink className="control-btns-link" to={'http://localhost:5173/SignIn'}>Open Auction</NavLink> : 
-            <NavLink className="control-btns-link" onClick={()=>{setIsOpen(true)}}>Open Auction</NavLink>
+            <NavLink className="control-btns-link" onClick={()=>{setIsOpen(true)}}> <span class="fa-solid fa-dollar" style={{color: "#d8df0f",}}> </span> Open Auction</NavLink>
             }
             
             <NavLink className="control-btns-link" to={`/ToursPerCity/${params.city}`}>Back To Tours Page</NavLink>
@@ -61,7 +61,7 @@ export default function TourPage(){
                         <div id='tour-sites'>
                         {chosenTour.sitesDuringtheTour.map((s)=>{
                             if(s){
-                                return(<div id='site-holder'> <p><span class="fa-solid fa-location-dot" style={{color: "#BAF801",}}> </span> {s}</p></div>);
+                                return(<div id='site-holder'> <p><span class="fa-solid fa-location-dot" style={{color: "#d8df0f",}}> </span> {s}</p></div>);
                             }
                         })}
                         </div>
@@ -70,18 +70,18 @@ export default function TourPage(){
                         <h3>Highlights - {chosenTour.tourName} Tour</h3>
                         {chosenTour.highlights.map((s)=>{
                             if(s){
-                                return(<div> <p><span class="fa-solid fa-star" style={{color: "#BAF801",}}> </span> {s}</p></div>);
+                                return(<div> <p><span class="fa-solid fa-star" style={{color: "#d8df0f",}}> </span> {s}</p></div>);
                             }
                         })}
                     </div>
                 </div>
-                <div id='contact-us'></div>
+                {/* <div id='contact-us'></div> */}
             </div>
         </div>}
         </div>
-        <div id='form-holder'>
+        {/* <div id='form-holder'>
         <AskForm></AskForm>
-        </div>
+        </div> */}
         </div>
     )
 }

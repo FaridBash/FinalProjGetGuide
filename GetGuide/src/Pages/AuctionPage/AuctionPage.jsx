@@ -23,6 +23,7 @@ export default function AuctionPage() {
   const [newBid, setNewBid] = useState([]);
   const [takeAuction, setTakeAuction] = useState(false);
   const [auctionIsOpen, setAuctionIsOpen] = useState(true);
+  const [lastBidder, setLastBidder] = useState(undefined);
   console.log("params._id", params);
   const dayNames = [
     "Sunday",
@@ -142,7 +143,7 @@ export default function AuctionPage() {
     console.log("bidderObj", bidderObj);
     setNumOfBidsFDB([bidderObj, ...numofBidsFDB]);
     setNewBid(bidderObj);
-
+    setLastBidder(numofBidsFDB[0]);
     bidAmountInputRef.current.value = "";
   };
 
@@ -165,13 +166,19 @@ export default function AuctionPage() {
   }
 
   function closeAuctionHandler(id) {
-    const winner=getLowestBid(auction);
+    
+    const lowestBid = auction.auctionBids.reduce((prev, current) => {
+      return prev.bid < current.bid ? prev : current;
+    });
+    
+    const winner = lowestBid.bidderName;
+    console.log("Wineeer", winner);
     try {
       fetch(`http://localhost:6363/api/Auctions/auction/${id}`, {
         method: "PUT",
         body: JSON.stringify({
           auctionIsOpen: false,
-          auctionWonBy:winner.bidderName,
+          auctionWonBy: winner,
 
         }),
         headers: {
@@ -179,7 +186,7 @@ export default function AuctionPage() {
         },
       })
         .then((res) => res.json())
-        .then((data) => setAuctionIsOpen(false));
+        .then((data) => {setAuctionIsOpen(false); console.log("updated data for winner", data);});
     } catch (error) {
       console.log(error);
     }
@@ -214,11 +221,14 @@ export default function AuctionPage() {
     for (let i = 0; i < arr.length; i++) {
       let bid = parseInt(arr[i].bid);
       if (bid < minBid) {
-        winnerObj.minBid = bid;
-        winnerObj.winner = arr[i].bidderName;
+        minBid = bid;
+        winner = arr[i].bidderName;
+        console.log('minBid',minBid);
+        console.log('winner',winner);
       }
     }
-    return winnerObj;
+    // console.log('winnerObj',winnerObj);
+    return winner;
   }
 
   function getRealDate(date) {
