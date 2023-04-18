@@ -132,7 +132,7 @@ background: linear-gradient(27deg, rgba(78,85,123,1) 0%, rgba(248,248,255,1) 43%
 
 @media only screen and (max-width: 800px){
     #header-bar{
-        height: 15vh;
+        height: fit-content;
         flex-direction: column;
         margin: 0;
         justify-content: flex-start;
@@ -157,5 +157,6 @@ background: linear-gradient(27deg, rgba(78,85,123,1) 0%, rgba(248,248,255,1) 43%
         width: 100%;
         display: flex;
         justify-content: space-between;
+        padding: 0 1rem;
     }
 }

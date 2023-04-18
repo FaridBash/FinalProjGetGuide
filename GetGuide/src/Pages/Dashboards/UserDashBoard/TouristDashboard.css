@@ -7,11 +7,12 @@
     background: green;
     display: flex;
     color: black;
+    box-sizing: border-box;
 }
 
 
 #TouristDashboard-side-menu{
-    width: 15%;
+    width: 20%;
     height: 100vh;
     background: rgb(59,66,93);
     background: linear-gradient(27deg, rgba(59,66,93,1) 40%, rgba(78,85,123,1) 100%, rgba(255,255,255,1) 100%);
@@ -57,4 +58,51 @@
     width: 100%;
     height: 95vh;
     background: red;
+}
+
+
+@media only screen and (max-width: 800px){
+
+    #TouristDashboard-page{
+        width: 100vw;
+        height: 85vh;
+        flex-direction: column-reverse;
+        align-items: center;
+        /* margin-top: 20rem; */
+        justify-content: center;
+        box-sizing: border-box;
+    }
+    #TouristDashboard-side-menu{
+        width: 100vw;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        /* margin-bottom: 30rem; */
+        margin: auto;
+        position: fixed;
+        bottom: 0;
+        box-sizing: border-box;
+    }
+
+    #TouristDashboard-side-menu ul{
+        width: 90%;
+        height: fit-content;
+        flex-direction: row;
+        margin: auto;
+       
+    }
+
+    #TouristDashboard-outlet{
+        width: 100vw;
+        height:90vh;
+        overflow-y: scroll;
+        box-sizing: border-box;
+
+    }
+
+    .side-menu-links{
+        margin: 0.5rem;
+    }
 }

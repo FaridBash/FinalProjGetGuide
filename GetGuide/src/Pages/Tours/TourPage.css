@@ -7,13 +7,14 @@
   gap: 3rem;
   margin-top: 2.5rem;
   background: rgb(78,85,123);
+  /* overflow-y: hidden; */
 /* background: linear-gradient(27deg, rgba(78,85,123,1) 0%, rgba(248,248,255,1) 43%, rgba(59,66,93,1) 99%); */
  
 }
 
 #control-btns {
   width: fit-content;
-  height: 100vh;
+  height: 94.7vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,7 +117,6 @@
 
 @media only screen and (max-width: 800px){
 
-
   #divider{
     width: 100vw;
     height: 92vh;
@@ -141,7 +141,7 @@
   }
 
   #tour-show {
-    width: 80vw;
+    width: fit-content;
     margin-top: -5rem;
   }
 

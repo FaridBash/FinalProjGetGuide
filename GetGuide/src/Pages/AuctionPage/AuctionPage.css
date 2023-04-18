@@ -110,3 +110,34 @@
   align-items: center;
   justify-content: space-between;
 }
+
+
+@media only screen and (max-width: 800px){
+  #auctionpage-aucinfo{
+    width: 90vw;
+    font-size: 15px;
+  }
+
+  #bids-container{
+    width: 90vw;
+    flex-direction: column;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+
+  #realtime-auction{
+    width: 90%;
+    font-size: 12px;
+  }
+
+  #newest-bid{
+    font-size: small;
+    background: #93a3e3;
+    color: rgb(255, 255, 0);
+  }
+
+  #controller{
+    /* flex-direction: row; */
+    justify-content: space-around;
+  }
+}
