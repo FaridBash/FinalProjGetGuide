@@ -5,7 +5,7 @@ const {getChats, getChatById, setChat, updateChat,}=require('../controllers/chat
 
 
 router.route('/').get( getChats).post( setChat);
-router.route('/chats/:id').get(getChatById).put(updateChat);
+router.route('/chat/:chatRoomName').get(getChatById).put(updateChat);
 
 
 module.exports=router;

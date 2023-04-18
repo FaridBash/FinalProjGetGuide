@@ -36,9 +36,10 @@ export default function UserOpenAuctionsPage() {
     });
 
     const result = await response.json();
-    console.log(result);
-    setAuctions(result);
-    return result;
+    console.log("Open auctions",result);
+    const openAuctions=result.filter((i)=>{if(i.auctionIsOpen) return true})
+    setAuctions(openAuctions);
+    return openAuctions;
   }
 
   return (

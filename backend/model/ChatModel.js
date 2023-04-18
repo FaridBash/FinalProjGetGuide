@@ -8,10 +8,6 @@ const chatSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    // chatTourId: {
-    //   type: String,
-    //   required: true,
-    // },
     
     chatMessages:{
         type:Array,

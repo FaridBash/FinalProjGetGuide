@@ -189,7 +189,7 @@ export default function AuctionPage() {
         .then((data) => {setAuctionIsOpen(false); 
           console.log("updated data for winner", data);
           const chatObj={};
-          chatObj.chatRoomName=id+""+winner;
+          chatObj.chatRoomName=(id+""+winner).replace(/ /g,'');;
           chatObj.chatMessages=[];
           setChat(chatObj);       
         });

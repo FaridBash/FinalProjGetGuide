@@ -83,10 +83,10 @@ function getRealDate(date) {
       { props.isOpen === false? <div id="winner-container"> <p>Won By: {props.winner} </p> </div>:null}
       <div id="auction-box-btns">
         <NavLink to={`/ToursPerCity/${props.city}/${props.tourId}`} className='auction-btn'>Tour Page</NavLink>
-        { props.isOpen === false  && userRole && userRole==='tourist' && <NavLink className='auction-btn'>End Auction</NavLink>}
-        {userRole && userRole==='tourist' &&  <NavLink to={`/Dashboard/guideDashboard/Auctions/${props.auctionId}`} className='auction-btn'>See Auction</NavLink> }
+        { props.isOpen === true  && userRole && userRole==='tourist' && <NavLink className='auction-btn'>End Auction</NavLink>}
+        {userRole && userRole==='tourist' &&   <NavLink to={`/Dashboard/guideDashboard/Auctions/${props.auctionId}`} className='auction-btn'>See Auction</NavLink> }
         {props.isOpen !== false &&userRole && userRole==='guide' && <NavLink to={`/Dashboard/guideDashboard/Auctions/${props.auctionId}`} className='auction-btn'>Join Auction</NavLink>}
-        {(props.isOpen === false && user && (props.winner === user.name || props.owner===true)) && <NavLink to={`/Dashboard/guideDashboard/Chats/${props.auctionId}` } className='auction-btn'>Join Chat</NavLink> }
+        {(props.isOpen === false && user && (props.winner === user.name || props.owner===true)) && <NavLink to={`/Dashboard/guideDashboard/Chats/${props.auctionId}${props.winner}` } className='auction-btn'>Join Chat</NavLink> }
       </div>
     </div>
   );

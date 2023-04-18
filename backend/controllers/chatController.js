@@ -10,7 +10,8 @@ const getChats=asyncHandler( async (req, res)=>{
 })
 
 const getChatById=asyncHandler( async (req, res)=>{
-    const chat=await Chats.findById(req.params.id);
+    const chat = await Chats.findOne({ chatRoomName: req.params.chatRoomName });
+    // const chat=await Chats.findById(req.params.chatRoomName);
     res.status(200).json(chat);
 })
 
@@ -38,9 +39,9 @@ const setChat=asyncHandler( async (req, res)=>{
 const updateChat=asyncHandler( async (req, res)=>{
     console.log(req.body);
  
-     const chat=await Chats.findById(req.params.id);
+    const chat = await Chats.findOne({ chatRoomName: req.params.chatRoomName });
      if(chat){
-         const updatedChat=await Tours.findByIdAndUpdate(req.params.id, req.body, {
+         const updatedChat=await Chats.findOneAndUpdate(req.params.chatRoomName, req.body, {
              new: true,
          });
      

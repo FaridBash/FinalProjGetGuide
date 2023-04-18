@@ -4,8 +4,8 @@ import "./UserOpenAuctions.css";
 import { useNavigate } from "react-router-dom";
 
 export default function UserClosedAuctionsPage() {
-  const [auctions, setAuctions] = useState(undefined);
   const [userToken, setUserToken] = useState(JSON.parse(localStorage.getItem('user')).token ?? undefined);
+  const [auctions, setAuctions] = useState(undefined);
   const nav=useNavigate();
   useEffect(() => {
     if(userToken){
@@ -42,6 +42,7 @@ export default function UserClosedAuctionsPage() {
             return true;
         }
     })
+    console.log("closed auctions", closedAucs);
     setAuctions(closedAucs);
     return closedAucs;
   }
@@ -62,7 +63,7 @@ export default function UserClosedAuctionsPage() {
                 city={e.auctionCity}
                 tourId={e.auctionTourId}
                 auctionId={e._id}
-                // isOpen={e.auctionIsOpen}
+                isOpen={e.auctionIsOpen}
                 winner={e.auctionWonBy}
                 owner={true}
                 />
