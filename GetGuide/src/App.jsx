@@ -21,6 +21,7 @@ import ClosedAuctions from './Pages/AuctionPage/ClosedAuctions';
 import WonAuctions from './Pages/AuctionPage/WonAuctions';
 import JoinedAuctions from './Pages/AuctionPage/JoinedAuctions';
 import UserClosedAuctionsPage from './Pages/Dashboards/UserDashBoard/UserClosedAuction';
+import ChatPage from './Pages/Chat/ChatPage';
 
 const route = createBrowserRouter([
   {
@@ -94,6 +95,10 @@ const route = createBrowserRouter([
       {
         path:'/Dashboard/guideDashboard/Auctions/:aucid',
         element:<AuctionPage/>
+      },
+      {
+        path:'/Dashboard/guideDashboard/Chats/:aucid',
+        element:<ChatPage/>
       },
       
       // {

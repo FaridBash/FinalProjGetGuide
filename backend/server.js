@@ -24,6 +24,7 @@ app.use(express.json());
 app.use('/api/tours', require('./routes/toursRoutes.js'));
 app.use('/api/auctions', require('./routes/auctionRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/chats', require('./routes/chatRoutes'));
 app.use(errorHandler);
 
 const server = http.createServer(app);

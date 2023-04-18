@@ -186,10 +186,18 @@ export default function AuctionPage() {
         },
       })
         .then((res) => res.json())
-        .then((data) => {setAuctionIsOpen(false); console.log("updated data for winner", data);});
+        .then((data) => {setAuctionIsOpen(false); 
+          console.log("updated data for winner", data);
+          const chatObj={};
+          chatObj.chatRoomName=id+""+winner;
+          chatObj.chatMessages=[];
+          setChat(chatObj);       
+        });
     } catch (error) {
       console.log(error);
     }
+
+
   }
 
   function updateAuctionWithNewBid(newBid) {
@@ -242,6 +250,26 @@ export default function AuctionPage() {
       new Date(date).getFullYear()
     );
   }
+
+
+
+  async function setChat(obj) {
+    const response = await fetch(
+      "http://localhost:6363/api/chats/",
+      {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },        
+        body: JSON.stringify(obj),
+      }
+    );
+    const result = await response.json();
+    console.log("result for chaaat", result);
+    return result;
+  }
+
+
 
   return (
     <div id="auction-page">

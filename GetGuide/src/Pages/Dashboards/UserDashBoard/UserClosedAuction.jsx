@@ -64,6 +64,7 @@ export default function UserClosedAuctionsPage() {
                 auctionId={e._id}
                 // isOpen={e.auctionIsOpen}
                 winner={e.auctionWonBy}
+                owner={true}
                 />
                 );
             })}
