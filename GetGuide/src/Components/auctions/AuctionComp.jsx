@@ -101,18 +101,13 @@ export default function AuctionComp(props) {
           {props.auctionId}
         </p>
       </div>
+      { props.isOpen === false? <div id="winner-container"> <p>Won By: {props.winner} </p> </div>:null}
       <div id="auction-box-btns">
         <NavLink to={`/ToursPerCity/${props.city}/${props.tourId}`} className='auction-btn'>Tour Page</NavLink>
-        {userRole && userRole==='tourist' && <NavLink className='auction-btn'>End Auction</NavLink>}
+        { props.isOpen === false  && userRole && userRole==='tourist' && <NavLink className='auction-btn'>End Auction</NavLink>}
         {userRole && userRole==='tourist' &&  <NavLink to={`/Dashboard/guideDashboard/Auctions/${props.auctionId}`} className='auction-btn'>See Auction</NavLink> }
-        {userRole && userRole==='guide' && <NavLink to={`/Dashboard/guideDashboard/Auctions/${props.auctionId}`} className='auction-btn'>Join Auction</NavLink>}
-        { userRole && userRole==='guide' && <div id="bid-container">
-        {/* <input type="number" id="bid-input" ref={props.bidAmountInputRef} placeholder="bid.." />
-        <NavLink className='auction-btn' onClick={props.submitNewBid}>Bid</NavLink> */}
-        {/* <NavLink className='auction-btn' onClick={()=>{onSubmitBid(props.auctionId);
-          
-        }}>Bid</NavLink> */}
-        </div>}
+        {props.isOpen !== false &&userRole && userRole==='guide' && <NavLink to={`/Dashboard/guideDashboard/Auctions/${props.auctionId}`} className='auction-btn'>Join Auction</NavLink>}
+        
       </div>
     </div>
   );

@@ -55,6 +55,8 @@ export default function WonAuctions(){
               tourId={e.auctionTourId}
               auctionId={e._id}
               numOfBids={e.auctionBids.length}
+              isOpen={e.auctionIsOpen}
+              winner={e.auctionWonBy}
             />
           );
         })}

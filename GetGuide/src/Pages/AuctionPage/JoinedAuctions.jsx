@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import AuctionComp from "../../Components/auctions/AuctionComp";
 import "../Dashboards/GuideDashboard/AvilableAuctions";
 
-export default function ClosedAuctions() {
+export default function JoinedAuctions() {
   const [auctions, setAuctions] = useState();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   const [userToken, setUserToken] = useState(
@@ -42,7 +42,7 @@ export default function ClosedAuctions() {
     const result = await response.json();
     console.log("result", result);
     const myResult = result.filter((e) => {
-      if (e.auctionIsOpen === false) {
+      if (e.auctionIsOpen !== false) {
         return true;
       }
     });
@@ -87,7 +87,7 @@ export default function ClosedAuctions() {
                 tourId={e.auctionTourId}
                 auctionId={e._id}
                 numOfBids={e.auctionBids.length}
-                isOpen={false}
+                isOpen={e.auctionIsOpen}
                 winner={e.auctionWonBy}
               />
             );

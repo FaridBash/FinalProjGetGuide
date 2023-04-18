@@ -319,6 +319,7 @@ export default function AuctionPage() {
         <div>
           {auctionIsOpen && (
             <div id="controller">
+              {userRole === 'guide'? 
               <div id="bid-controller">
                 <input
                   type="number"
@@ -332,7 +333,7 @@ export default function AuctionPage() {
                 >
                   Add bid
                 </button>
-              </div>
+              </div>:null}
               {userRole && userRole === "tourist" && (
                 <button
                   onClick={() => {

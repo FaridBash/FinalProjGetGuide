@@ -21,3 +21,20 @@
     justify-content: center;
     margin: 3rem;
 }
+
+
+@media only screen and (max-width: 800px){
+    #tours-page{
+        width: 100vw;
+        max-height: 80vh;
+    }
+
+    #tours-display{
+        width: 100vw;
+        height: 70%;
+        overflow-y: scroll;
+        margin: auto;
+        margin-top: 10rem;
+    }
+
+}

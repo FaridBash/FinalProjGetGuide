@@ -128,3 +128,34 @@
     background: rgb(78,85,123);
 background: linear-gradient(27deg, rgba(78,85,123,1) 0%, rgba(248,248,255,1) 43%, rgba(59,66,93,1) 99%);
 }
+
+
+@media only screen and (max-width: 800px){
+    #header-bar{
+        height: 15vh;
+        flex-direction: column;
+        margin: 0;
+        justify-content: flex-start;
+    }
+
+    #header-menu{
+        width: 100vw;
+        margin-left: -2rem;
+        margin-top: -1rem;
+        align-items: center;
+    }
+    
+    #welcome-user-div{
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: -1rem;
+        /* text-align: left; */
+    }
+    #name-holder{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+}

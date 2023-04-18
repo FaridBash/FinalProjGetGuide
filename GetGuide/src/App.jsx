@@ -19,6 +19,7 @@ import GuideDashboard from './Pages/Dashboards/GuideDashboard/GuideDashboard';
 import AuctionPage from './Pages/AuctionPage/AuctionPage';
 import ClosedAuctions from './Pages/AuctionPage/ClosedAuctions';
 import WonAuctions from './Pages/AuctionPage/WonAuctions';
+import JoinedAuctions from './Pages/AuctionPage/JoinedAuctions';
 
 const route = createBrowserRouter([
   {
@@ -78,6 +79,10 @@ const route = createBrowserRouter([
           {
             path:'/Dashboard/guideDashboard/WonTours',
             element:<WonAuctions/>
+          },
+          {
+            path:'/Dashboard/guideDashboard/JoinedTours',
+            element:<JoinedAuctions/>
           },
         ]
       },

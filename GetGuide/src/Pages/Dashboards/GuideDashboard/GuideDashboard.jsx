@@ -15,8 +15,8 @@ export default function GuideDashboard(){
     const LinkStyles = ({ isActive }) => {
         console.log("isActive", isActive);
         return {
-          borderBottom: isActive ? "2px solid rgb(240,229,7,1)" : "",
-          borderTop: isActive ? "2px solid rgb(240,229,7,1)" : "",
+          borderBottom: isActive ? "1px solid rgb(240,229,7,1)" : "",
+          borderTop: isActive ? "1px solid rgb(240,229,7,1)" : "",
           color:"rgb(240,229,7,1)",
           // backgoundColor: isActive? '':''
           boxShadow: isActive? "rgba(20, 20, 40, 0.25) 0px 30px 60px -12px inset, rgba(10, 0, 90, 0.3) 0px 18px 36px -18px inset":"",
@@ -30,6 +30,7 @@ export default function GuideDashboard(){
             <ul>
             
             <NavLink style={LinkStyles} className="side-menu-links" to={'/Dashboard/guideDashboard/Auctions'}>Auctions</NavLink>
+            <NavLink style={LinkStyles} className="side-menu-links" to={'/Dashboard/guideDashboard/JoinedTours'}>Joined Auctions</NavLink>
             <NavLink style={LinkStyles} className="side-menu-links" to={'/Dashboard/guideDashboard/ClosedAuctions'}>Closed Auctions</NavLink>
             <NavLink style={LinkStyles} className="side-menu-links" to={'/Dashboard/guideDashboard/WonTours'}>Tours</NavLink>
             </ul>

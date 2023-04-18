@@ -112,3 +112,59 @@
   padding: 0.5rem;
   border-radius: 15px;
 }
+
+
+@media only screen and (max-width: 800px){
+
+
+  #divider{
+    width: 100vw;
+    height: 92vh;
+    flex-direction: column;
+    margin-top: 4.5rem;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  #control-btns {
+    width: 100vw;
+    height: 10rem;
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .control-btns-link{
+    margin: 0;
+  }
+
+  #tour-show {
+    width: 80vw;
+    margin-top: -5rem;
+  }
+
+  #tour-overview{
+    width: 80vw;
+  }
+
+  #tour-name-box{
+    width: 80vw;
+    font-size: 0.8rem;
+    align-items: center;
+    text-align: left;
+  }
+
+  #tour-overview h4{
+    font-size: 1rem;
+  }
+
+  #tou-highlights{
+    width: 80vw;
+  }
+
+  #tou-highlights h3{
+    font-size: 1rem;
+  }
+}

@@ -4,14 +4,14 @@
     margin: 2rem;
     padding: 0;
     box-sizing: border-box;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background: url('../../assets/jerusalem.jpg')no-repeat center center/cover;
-    color: #BAF801;
+    color: #f2f545;
     font-size: 10px;
     border-radius: 5px;
     box-shadow: rgb(255, 255, 255) 0px 1px 4px;
@@ -20,7 +20,7 @@
 #dash{
     width: 30%;
     height: 0;
-    border-bottom: 2px solid #BAF801;
+    border-bottom: 2px solid #f2f545;
 }
 #image-opacity{}
 
