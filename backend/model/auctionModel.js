@@ -26,7 +26,7 @@ const auctionSchema = mongoose.Schema(
     },
     auctionEndDate: {
       type: Date,
-      required: true,
+      required: false,
     },
 
     auctionCity:{

@@ -27,6 +27,7 @@
 
 @media only screen and (max-width: 800px){
   #user-open-auctions{
+    width: 100vw;
     height: 88vh;
   }
   #auctions-container{

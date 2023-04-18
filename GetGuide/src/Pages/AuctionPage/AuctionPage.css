@@ -65,13 +65,15 @@
 
 
 #newest-bid {
-  background: green;
+  /* background: green; */
   box-sizing: border-box;
   font-size: 15px;
   padding: 0.2rem;
   text-align: center;
   border-radius: 25px;
-  color: rgb(224, 224, 29);
+  background: #93a3e3;
+    color: rgb(255, 255, 0);
+  /* color: rgb(224, 224, 29); */
   /* position: fixed; */
   /* margin-top: -10; */
   /* top: 10; */
@@ -84,14 +86,18 @@
 #bid-controller {
   width: 10rem;
   display: flex;
+  align-items: center;
 }
 
 #bid-controller input {
   width: 70%;
+  height: 3rem;
   border-radius: 10px 0 0 10px;
   border: 1px solid transparent;
   box-sizing: border-box;
   padding: 1rem;
+  background: #93a3e3;
+  color: #ede920;
 }
 
 #bid-controller button {
@@ -111,7 +117,54 @@
   justify-content: space-between;
 }
 
+#controller button{
+  width: fit-content;
+  /* height: max-content; */
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0.2rem 0.4rem;
+    margin: 0.2rem;
+    background: #000;
 
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(circle, rgba(78,85,123,1) 0%, rgba(117,122,152,1) 100%);
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #ede920;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 12px;
+}
+
+#controller button:focus{
+  color: #ede920;
+}
+#controller button:active {
+  transform: translateY(-1px);
+  color: #ede920;
+}
+#controller button:hover{
+
+}
 @media only screen and (max-width: 800px){
   #auctionpage-aucinfo{
     width: 90vw;

@@ -30,7 +30,7 @@ export default function Modal(props) {
     aucObj.language = option.value;
     aucObj.city = props.city;
     aucObj.date = new Date(startDate);
-    aucObj.endDate = new Date(endDate);
+    // aucObj.endDate = new Date(endDate);
     aucObj.desiredPrice = desiredPriceInputRef.current.value;
     aucObj.auctionBids=[];
     aucObj.isOpen=true;
@@ -80,14 +80,14 @@ export default function Modal(props) {
             />
           </div>
           <div id="date-div">
-          <p id="date-div-p">
+          {/* <p id="date-div-p">
               <b>End By: </b>{" "}
-            </p>
-            <DatePicker
+            </p> */}
+            {/* <DatePicker
               selected={endDate}
               onChange={(date) => setEndDate(new Date(date))}
               id="date-picker"
-            />
+            /> */}
           </div>
           <div id="desired-price-holder">
             <input

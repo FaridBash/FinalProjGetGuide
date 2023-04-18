@@ -66,8 +66,41 @@ export default function AuctionComp(props) {
 
   
 // }
+const dayNames = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+const month = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 
-
+function getRealDate(date) {
+  return (
+    dayNames[new Date(date).getDay()] +
+    ", " +
+    new Date(date).getDate() +
+    " " +
+    month[new Date(date).getMonth()] +
+    " " +
+    new Date(date).getFullYear()
+  );
+}
 
 
 
@@ -82,16 +115,14 @@ export default function AuctionComp(props) {
         </p>
         <p>
           <b>Tour Date: </b>
-          {props.Date}
+          {getRealDate(props.Date)}
+          
         </p>
         <p>
           <b>Req Lang: </b>
           {props.lang}
         </p>
-        <p>
-          <b>Auction Ends: </b>
-          {props.endDate}
-        </p>
+        
         <p>
           <b>num of bids: </b>
           {props.numOfBids}

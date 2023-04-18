@@ -267,16 +267,7 @@ export default function AuctionPage() {
               {getRealDate(auction.auctionDate)}{" "}
             </td>
           </tr>
-          <tr>
-            <td>
-              {" "}
-              <p className="info-table">
-                {" "}
-                <b> Auction Ends By: </b>{" "}
-              </p>{" "}
-              {getRealDate(auction.auctionEndDate)}
-            </td>
-          </tr>
+        
           <tr>
             <td>
               {" "}
@@ -387,3 +378,5 @@ export default function AuctionPage() {
     </div>
   );
 }
+
+
