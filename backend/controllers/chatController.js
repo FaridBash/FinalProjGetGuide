@@ -26,7 +26,7 @@ const setChat=asyncHandler( async (req, res)=>{
     const chat=await Chats.create({
         chatRoomName: req.body.chatRoomName,
         chatMessages: req.body.chatMessages,
-        
+        chatId: req.body.chatId,
     })
 
     res.status(200).json(chat);
@@ -39,9 +39,9 @@ const setChat=asyncHandler( async (req, res)=>{
 const updateChat=asyncHandler( async (req, res)=>{
     console.log(req.body);
  
-    const chat = await Chats.findOne({ chatRoomName: req.params.chatRoomName });
+    const chat = await Chats.findById(req.params.id);
      if(chat){
-         const updatedChat=await Chats.findOneAndUpdate(req.params.chatRoomName, req.body, {
+         const updatedChat=await Chats.findByIdAndUpdate(req.params.id, req.body, {
              new: true,
          });
      

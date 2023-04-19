@@ -13,6 +13,10 @@ const chatSchema = mongoose.Schema(
         type:Array,
         required: true
     },
+    chatId:{
+        type:String,
+        required: true
+    },
    
   },
   {

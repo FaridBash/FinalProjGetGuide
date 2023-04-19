@@ -10,107 +10,115 @@ const socket = io.connect("http://localhost:6363");
 export default function ChatPage(){
     const params=useParams()
     const [room, setRoom] = useState((params.aucid).replace(/ /g,''));
-    const [message, setMessage] = useState([]);
+    const [roomToChat, setRoomToChat] = useState(undefined);
     const [messageReceived, setMessageReceived] = useState("");
+    const [message, setMessage] = useState([]);
     const [Chat, setChat]=useState(undefined);
     const [dataToShow, setDataToShow]=useState(undefined);
     const [user, setUser]=useState(JSON.parse(localStorage.getItem('user')).name);
-    const [newMessage, setNewMessage]=useState([]);
+    const [newMessage, setNewMessage]=useState("");
     const [R, setR]=useState('');
     let messageInputRef=useRef(null);
     console.log(params.aucid);
 
-
     useEffect(()=>{
-        setR((params.aucid).replace(/ /g,''));
-        if(room === (params.aucid).replace(/ /g,'') ){
-          getChat(room);
-        }
-      },[]);
-
-
-      useEffect(()=>{    
-        if(Chat!=undefined){
-        // setRoom(R);
-        // setMessage(Chat.chatMessages);
+      getChat(room);
+      // if(Chat){
+      //   // setMessageReceived(Chat.chatMessages)
+      //   // console.log(newMessage);
+      //   // setMessage(Chat.chatMessages);
+      //   set
+      // }
+    },[])
+    useEffect(()=>{
+      if(Chat!=undefined){
+        console.log(Chat);
+        setRoomToChat(Chat._id);
+        setMessage(Chat.chatMessages);
         if(message){
           setDataToShow(Chat.chatMessages);
-          console.log("DATA TO SHOW", dataToShow);
         }
       }
     },[Chat])
 
-    useEffect(()=>{    
-      if(room){
+    useEffect(() => {
+      if (roomToChat) {
         joinRoom();
-        // setMessage(Chat.chatMessages);
-        // if(message){
-        //   setDataToShow(Chat.chatMessages);
-        //   console.log("DATA TO SHOW", dataToShow);
-        // }
       }
-      //  getChat(room);
-    },[room])
-   
-    // useEffect(()=>{    
-    //   if(message!=undefined){
-    //     console.log(message);
-    //     // sendMessage();
-    //     // setDataToShow(message)
-    //    }
-    // },[message])
-    useEffect(()=>{    
-        sendMessage();
-    },[newMessage]);
+    }, [roomToChat]);
 
-    useEffect(()=>{    
-      if(messageReceived){
-        setMessage(JSON.parse(messageReceived));
-        setDataToShow(JSON.parse(messageReceived));
-        updateHandler(room, JSON.parse(messageReceived));
-       }
-    },[messageReceived])
+    useEffect(() => {
+      console.log("newMessage", newMessage);
+      sendMessage();
+    }, [newMessage]);
+    useEffect(() => {
+      console.log("newMessage", newMessage);
+      if(newMessage===""){
+        setNewMessage(message);
+      }
+    }, [message]);
 
-    // useEffect(()=>{
-    //   console.log("Data to show useEffect", dataToShow);
-    // },[dataToShow])
+    useEffect(() => {
+      if (messageReceived) {
+        setMessage((messageReceived));
+        console.log((messageReceived));
+        setDataToShow((messageReceived));
+        updateHandler(Chat._id, (messageReceived));
+      }
+    }, [messageReceived]);
+    
+
+    useEffect(() => {
+      socket.on("receive-message", (data) => {
+        setMessageReceived((data.message));
+        updateChatRoomWithNewMessage(data.newMessage);
+      });
+    }, [socket]);
+    
+
+    function updateChatRoomWithNewMessage(newMessage) {
+      setChat((prevChat) => {
+        const updatedMessages = [...prevChat.chatMessages, newMessage];
+        return { ...prevChat, chatMessages: updatedMessages };
+      });
+    }
+
+
 
     const joinRoom = () => {
-        if (room !== undefined) {
-          socket.emit("join_room", room);
-          console.log("Room Joined",room);
+        if (roomToChat) {
+          socket.emit("join_room", roomToChat);
+          console.log("Room Joined",roomToChat);
         }
       };
 
       const sendMessage = () => {
-        socket.emit("send-message", { message, room });
+        socket.emit("send-message", { message, roomToChat });
       };
     
-      useEffect(() => {
-        socket.on("receive-message", (data) => {
-          setMessageReceived(JSON.stringify(data.message));
-          
-          console.log('messageReceived',messageReceived);
-        });
-      }, [socket]);
+     
 
       function submitNewMessage(){
         if(messageInputRef.current.value!==""){
-          const user=JSON.parse(localStorage.getItem('user')).name;
-          const messageObj={};
-          messageObj.user=user;
-          messageObj.chatMes=messageInputRef.current.value; 
-          setMessage([...message, messageObj]);
-          setNewMessage(messageObj);
-          messageInputRef.current.value="";
+          if(user){
+            const user=JSON.parse(localStorage.getItem('user')).name;
+            const messageObj={};
+            messageObj.user=user;
+            messageObj.chatMes=messageInputRef.current.value; 
+            setMessage([...message, messageObj]);
+            setNewMessage(messageObj);
+            messageInputRef.current.value="";
+          }
         }
+
+        console.log("dataToShow",dataToShow);
           
 
       }
 
       async function updateHandler(rm, sms) {
         try {
-          fetch(`http://localhost:6363/api/Chats/chat/${rm}`, {
+          fetch(`http://localhost:6363/api/Chats/chat/update/${rm}`, {
             method: "PUT",
             body: JSON.stringify({
               chatMessages: sms,
@@ -133,29 +141,14 @@ export default function ChatPage(){
         await fetch(`http://localhost:6363/api/Chats/Chat/${room}`)
           .then((res) => res.json())
           .then((res) => {
+            console.log("res from getChat", res);
             setChat(res);
-            setMessage(res.chatMessages);
+            // setMessage(res.chatMessages);
             console.log("res GETTING Chat", res);
           });
       }
 
-      async function updateHandler(room, biObj) {
-        try {
-          fetch(`http://localhost:6363/api/Chats/Chat/${room}`, {
-            method: "PUT",
-            body: JSON.stringify({
-              chatMessages: biObj,
-            }),
-            headers: {
-              "Content-type": "application/json; charset=UTF-8",
-            },
-          })
-            .then((res) => res.json())
-            .then((data) => console.log("data from updatehandler", data));
-        } catch (error) {
-          console.log(error);
-        }
-      }
+     
       const [myStyle, setMyStyle]=useState({});
       let lS={};
       let pstyle={}
@@ -181,10 +174,12 @@ export default function ChatPage(){
         <div id='chat-container'>
          <div id='chat-area'>
 
-         {dataToShow && dataToShow.map((S)=>{
-          {S.user===user? lS=lineStyleUser: lS=lineStyleNotUser }
-          {S.user===user? pstyle=userBackground: pstyle=notUserBackground }
-           return <div id='message-div' style={lS}> <p id='message-content' style={pstyle}>{S.user} : {S.chatMes} </p> </div>
+         {Array.isArray(dataToShow) && dataToShow.map((S)=>{
+          { user && S && S.user===user? lS=lineStyleUser: lS=lineStyleNotUser }
+          { user && S && S.user===user? pstyle=userBackground: pstyle=notUserBackground }
+
+          {  return <div id='message-div' style={lS}> <p id='message-content' style={pstyle}>{S.chatMes} </p> </div>}
+           
           })}
 
           </div>

@@ -43,7 +43,7 @@ io.on('connection', (socket) => {
     });
     
     socket.on("send-message",(data)=>{
-        io.in(data.room).emit("receive-message", data)
+        io.in(data.roomToChat).emit("receive-message", data)
     })
 
     

@@ -191,6 +191,7 @@ export default function AuctionPage() {
           const chatObj={};
           chatObj.chatRoomName=(id+""+winner).replace(/ /g,'');;
           chatObj.chatMessages=[];
+          chatObj.chatId=id;
           setChat(chatObj);       
         });
     } catch (error) {
