@@ -5,8 +5,8 @@
     margin: 2rem;
     padding: 0;
     box-sizing: border-box;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     background: #fff;
@@ -28,13 +28,14 @@
     justify-content: center;
 }
 #tour-name{
-    width: 100%;
+    width: 80%;
     border-bottom: 2px dashed black;
     margin-top: -0.5rem;
 
 }
+
 #info{
-    width: 80%;
+    width: 90%;
     height: 20%;
     margin: 0.5rem;
     padding: 1rem;
@@ -46,8 +47,8 @@
 
 #chectour-link{
     margin: -0.5rem auto 1rem;
-   color: #BAF801;
-   background:#051A35 ;
+   color: #e8f803;
+   background:#012a60 ;
    padding: 5px;
    /* rotate: 90deg; */
 }
@@ -55,8 +56,8 @@
 #hide-link{
     z-index: -1;
     padding: 0.5rem 1rem;
-    background: #051A35;
-    color: #BAF801;
+    background: #e7d40d;
+    color: #094291;
     border-radius:15px;
     /* margin-bottom: 2rem; */
 }

@@ -68,6 +68,10 @@ background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, F
     height: 100%;
     box-sizing: border-box;
     padding: 1rem;
+    background: #e7ebef;
+    color: #234c9a;
+    font-size: 15px;
+    font-weight: 700;
 }
 
 #chat-Btn{
@@ -106,4 +110,24 @@ background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, F
     white-space: nowrap;
     will-change: box-shadow,transform;
     font-size: 15px;
+}
+
+
+@media only screen and (max-width: 800px){
+    .chat-page{
+        justify-content: end;
+    }
+    #chat-container{
+        width: 100vw;
+        height: 84vh;
+        border-radius: 0;
+        font-size: 13px;
+
+    }
+
+    #chat-area{
+        height: 89%;
+    }
+
+
 }
